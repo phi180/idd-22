@@ -18,7 +18,12 @@ public enum Extensions {
     private CustomFileReader fileReader;
 
     public static Extensions fromString(String extension) {
-        return Extensions.valueOf(extension);
+        for(Extensions ext : Extensions.values()) {
+            if(ext.getExtension().equals(extension))
+                return ext;
+        }
+
+        return null;
     }
 
 }

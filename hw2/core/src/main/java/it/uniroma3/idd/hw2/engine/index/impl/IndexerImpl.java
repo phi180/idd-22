@@ -5,9 +5,10 @@ import it.uniroma3.idd.hw2.filesystem.DirectorySeeker;
 import it.uniroma3.idd.hw2.filesystem.Extensions;
 import it.uniroma3.idd.hw2.filesystem.impl.DirectorySeekerImpl;
 import org.apache.commons.io.FilenameUtils;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.TokenFilter;
-import org.apache.lucene.analysis.Tokenizer;
+import org.apache.lucene.analysis.*;
+import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+import org.apache.lucene.analysis.custom.CustomAnalyzer;
+import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
@@ -24,42 +25,43 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static it.uniroma3.idd.hw2.utils.constants.Constants.CONTENT;
+import static it.uniroma3.idd.hw2.utils.constants.Constants.TITLE;
+
 public class IndexerImpl implements Indexer {
-
-    private final static String TITLE = "title";
-    private final static String CONTENT = "content";
-
     private String dirWithFiles;
     private String indexDir;
 
-    private Tokenizer tokenizer;
-    private List<Class<TokenFilter>> tokenFilterClasses;
+    private Class<TokenizerFactory> tokenizerFactoryClass;
+    private List<Class<TokenFilterFactory>> tokenFilterFactoryClasses;
 
     private IndexerImpl(IndexerBuilder indexerBuilder) {
         this.dirWithFiles = indexerBuilder.dirWithFiles;
         this.indexDir = indexerBuilder.indexDir;
-        this.tokenFilterClasses = indexerBuilder.tokenFilterClasses;
-        this.tokenizer = indexerBuilder.tokenizer;
+        this.tokenFilterFactoryClasses = indexerBuilder.tokenFilterFactoryClasses;
+        this.tokenizerFactoryClass = indexerBuilder.tokenizerFactoryClass;
     }
 
     public static class IndexerBuilder {
         private String dirWithFiles;
         private String indexDir;
 
-        private Tokenizer tokenizer;
-        private List<Class<TokenFilter>> tokenFilterClasses;
+        private Class<TokenizerFactory> tokenizerFactoryClass;
+        private List<Class<TokenFilterFactory>> tokenFilterFactoryClasses;
 
         public IndexerBuilder(String dirWithFiles,String indexDir) {
             this.dirWithFiles = dirWithFiles;
             this.indexDir = indexDir;
         }
 
-        public void setTokenizer(Tokenizer tokenizer) {
-            this.tokenizer = tokenizer;
+        public IndexerBuilder setTokenizer(Class<TokenizerFactory> tokenizerFactoryClass) {
+            this.tokenizerFactoryClass = tokenizerFactoryClass;
+            return this;
         }
 
-        public void setTokenFilterClasses(List<Class<TokenFilter>> tokenFilterClasses) {
-            this.tokenFilterClasses = tokenFilterClasses;
+        public IndexerBuilder setTokenFilterClasses(List<Class<TokenFilterFactory>> tokenFilterFactoryClasses) {
+            this.tokenFilterFactoryClasses = tokenFilterFactoryClasses;
+            return this;
         }
 
         public IndexerImpl build() {
@@ -79,8 +81,20 @@ public class IndexerImpl implements Indexer {
 
         Map<String, Analyzer> perFieldAnalyzers = new HashMap<>();
 
-        // TODO
-        Analyzer analyzer = null;//new PerFieldAnalyzerWrapper(defaultAnalyzer, perFieldAnalyzers);
+        perFieldAnalyzers.put(TITLE, new WhitespaceAnalyzer());
+        CustomAnalyzer.Builder contentAnalyzerBuilder = null;
+        try {
+            contentAnalyzerBuilder = CustomAnalyzer.builder()
+                            .withTokenizer(this.tokenizerFactoryClass);
+            for(Class<TokenFilterFactory> tokenFilterFactory : this.tokenFilterFactoryClasses) {
+                contentAnalyzerBuilder.addTokenFilter(tokenFilterFactory);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        perFieldAnalyzers.put(CONTENT, contentAnalyzerBuilder.build());
+
+        Analyzer analyzer = new PerFieldAnalyzerWrapper(defaultAnalyzer, perFieldAnalyzers);
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
 
         try {
@@ -94,7 +108,7 @@ public class IndexerImpl implements Indexer {
         while(directorySeeker.hasNext()) {
             String fileToBeIndexed = directorySeeker.next();
 
-            // and... what if extension is not listed in enum??
+            // what if extension is not listed in enum??
             Extensions extensions = Extensions.fromString(FilenameUtils.getExtension(fileToBeIndexed));
 
             Document doc = new Document();
