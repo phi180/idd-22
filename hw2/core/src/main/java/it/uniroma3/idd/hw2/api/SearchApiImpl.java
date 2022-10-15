@@ -26,6 +26,20 @@ public class SearchApiImpl implements SearchApi {
     }
 
     @Override
+    public ResultsDTO getAllResultsWithParser(String query) {
+        ResultsDTO resultsDTO = new ResultsDTO();
+
+        Searcher searcher = new SearcherImpl();
+        Map<ResultEntry,Float> scoreDocs = searcher.searchWithParser(query);
+
+        for(Map.Entry<ResultEntry,Float> entry2score : scoreDocs.entrySet()) {
+            resultsDTO.getResultListDTO().add(toResultEntryDTO(entry2score.getKey()));
+        }
+
+        return resultsDTO;
+    }
+
+    @Override
     public PaginatedResultsDTO getPaginatedResults(String query, int pageNumber, int pageSize) {
         // TODO
         return null;

@@ -7,4 +7,6 @@ import java.util.Map;
 
 public interface Searcher {
     Map<ResultEntry, Float> search(String queryString);
+
+    Map<ResultEntry, Float> searchWithParser(String queryString);
 }

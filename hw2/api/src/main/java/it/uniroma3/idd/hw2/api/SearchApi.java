@@ -9,6 +9,8 @@ public interface SearchApi {
      * */
     ResultsDTO getAllResults(String query);
 
+    ResultsDTO getAllResultsWithParser(String query);
+
     /**
      * @return paginated results returned by index
      * */

@@ -4,7 +4,6 @@ import it.uniroma3.idd.hw2.engine.index.Indexer;
 import it.uniroma3.idd.hw2.filesystem.DirectorySeeker;
 import it.uniroma3.idd.hw2.filesystem.Extensions;
 import it.uniroma3.idd.hw2.filesystem.impl.DirectorySeekerImpl;
-import it.uniroma3.idd.hw2.utils.StopwordsReader;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.lucene.analysis.*;
 import org.apache.lucene.analysis.core.StopFilterFactory;

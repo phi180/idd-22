@@ -11,15 +11,36 @@ public class StatsWriter {
 
     private static final String INDEX_STATS = "./index_stats";
 
-    public static void writeStats(String queryString, Long timestamp, Explanation explanation) {
+    public static void initStatsFile(String queryString, Long timestamp) {
         File statsDir = new File(INDEX_STATS);
         if (!statsDir.exists()){
             statsDir.mkdirs();
         }
 
         String runStatsFile = INDEX_STATS + "/stats_" + timestamp;
+        String content = "Stats result for query: " + queryString;
+        try {
+            FileUtils.writeStringToFile(new File(runStatsFile),queryString, "UTF-8", true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void writeStats(Long timestamp, Explanation explanation) {
+        String runStatsFile = INDEX_STATS + "/stats_" + timestamp;
         try {
             FileUtils.writeStringToFile(new File(runStatsFile),explanation.toString(), "UTF-8", true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public static void appendElapsedTime(Long initialTimeStamp, Long endTimeStamp) {
+        String runStatsFile = INDEX_STATS + "/stats_" + initialTimeStamp;
+        String content = "Elapsed time: " + (endTimeStamp-initialTimeStamp) + "ms";
+
+        try {
+            FileUtils.writeStringToFile(new File(runStatsFile),content, "UTF-8", true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
