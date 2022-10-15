@@ -4,12 +4,15 @@ import it.uniroma3.idd.hw2.engine.index.Indexer;
 import it.uniroma3.idd.hw2.filesystem.DirectorySeeker;
 import it.uniroma3.idd.hw2.filesystem.Extensions;
 import it.uniroma3.idd.hw2.filesystem.impl.DirectorySeekerImpl;
+import it.uniroma3.idd.hw2.utils.StopwordsReader;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.lucene.analysis.*;
+import org.apache.lucene.analysis.core.StopFilterFactory;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.custom.CustomAnalyzer;
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
+import org.apache.lucene.codecs.simpletext.SimpleTextCodec;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
 import org.apache.lucene.document.StringField;
@@ -34,6 +37,8 @@ public class IndexerImpl implements Indexer {
 
     private Class<TokenizerFactory> tokenizerFactoryClass;
     private List<Class<TokenFilterFactory>> tokenFilterFactoryClasses;
+
+    private static final String STOPWORDS_FILE = "stopwords.txt";
 
     private IndexerImpl(IndexerBuilder indexerBuilder) {
         this.dirWithFiles = indexerBuilder.dirWithFiles;
@@ -71,62 +76,47 @@ public class IndexerImpl implements Indexer {
     }
 
     @Override
-    public void buildIndex() {
+    public void buildIndex() throws IOException {
         DirectorySeeker directorySeeker = new DirectorySeekerImpl(dirWithFiles);
 
         Directory directory = null;
         IndexWriter writer = null;
 
         Analyzer defaultAnalyzer = new StandardAnalyzer();
-
         Map<String, Analyzer> perFieldAnalyzers = new HashMap<>();
-
         perFieldAnalyzers.put(TITLE, new WhitespaceAnalyzer());
         CustomAnalyzer.Builder contentAnalyzerBuilder = null;
-        try {
-            contentAnalyzerBuilder = CustomAnalyzer.builder()
-                            .withTokenizer(this.tokenizerFactoryClass);
-            for(Class<TokenFilterFactory> tokenFilterFactory : this.tokenFilterFactoryClasses) {
-                contentAnalyzerBuilder.addTokenFilter(tokenFilterFactory);
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+        contentAnalyzerBuilder = CustomAnalyzer.builder()
+                        .withTokenizer(this.tokenizerFactoryClass);
+        for(Class<TokenFilterFactory> tokenFilterFactory : this.tokenFilterFactoryClasses) {
+            contentAnalyzerBuilder.addTokenFilter(tokenFilterFactory);
         }
+
+        contentAnalyzerBuilder.addTokenFilter(StopFilterFactory.NAME, "words", STOPWORDS_FILE);
         perFieldAnalyzers.put(CONTENT, contentAnalyzerBuilder.build());
 
         Analyzer analyzer = new PerFieldAnalyzerWrapper(defaultAnalyzer, perFieldAnalyzers);
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
+        config.setCodec(new SimpleTextCodec());
 
-        try {
-            directory = FSDirectory.open(Paths.get(indexDir));
-            writer = new IndexWriter(directory, config);
-            writer.deleteAll();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        directory = FSDirectory.open(Paths.get(indexDir));
+        writer = new IndexWriter(directory, config);
+        writer.deleteAll();
 
         while(directorySeeker.hasNext()) {
             String fileToBeIndexed = directorySeeker.next();
 
-            // what if extension is not listed in enum??
-            Extensions extensions = Extensions.fromString(FilenameUtils.getExtension(fileToBeIndexed));
+            Extensions extension = Extensions.fromString(FilenameUtils.getExtension(fileToBeIndexed));
 
-            Document doc = new Document();
-            doc.add(new StringField(TITLE, fileToBeIndexed, Field.Store.YES));
-
-            try {
-                doc.add(new TextField(CONTENT, extensions.getFileReader().readContent(fileToBeIndexed), Field.Store.NO));
+            if(extension != null) {
+                Document doc = new Document();
+                doc.add(new StringField(TITLE, fileToBeIndexed, Field.Store.YES));
+                doc.add(new TextField(CONTENT, extension.getFileReader().readContent(fileToBeIndexed), Field.Store.NO));
                 writer.addDocument(doc);
-            } catch (IOException e) {
-                throw new RuntimeException(e);
             }
         }
 
-        try {
-            writer.commit();
-            writer.close();
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
+        writer.commit();
+        writer.close();
     }
 }

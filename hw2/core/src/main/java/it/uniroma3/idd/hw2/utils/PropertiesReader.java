@@ -49,4 +49,16 @@ public class PropertiesReader {
         return tokenFiltersFactory;
     }
 
+    public static Boolean readExplainProperty() {
+        try (InputStream input = new FileInputStream(PROPERTIES_FILE)) {
+            Properties prop = new Properties();
+            prop.load(input);
+            String explain = prop.getProperty("explain");
+            return Boolean.valueOf(explain);
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return false;
+    }
+
 }

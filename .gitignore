@@ -193,3 +193,4 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/intellij,intellij+all,maven
 /hw2/core/index/
+/hw2/core/index_stats/

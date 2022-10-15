@@ -23,9 +23,15 @@ class SearchApiImplTest {
     }
 
     @Test
-    void getAllResultsTest() {
+    void getAllResultsVolpeTest() {
         ResultsDTO results = searchApi.getAllResults("volpe");
         assertTrue(results.getResultListDTO().get(0).getFileName().endsWith("volpe.txt"));
+    }
+
+    @Test
+    void getAllResultsBothTest() {
+        ResultsDTO results = searchApi.getAllResults("chiostro");
+        assertEquals(2, results.getResultListDTO().size());
     }
 
     private void buildIndex() {
