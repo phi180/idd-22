@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Build Index</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Search for content in your computer"/>
+    <meta name="robots" content="index, follow"/>
+    <meta name="author" content="phi180"/>
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link th:href="@{/css/search.css}" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"
+            integrity="sha256-w8CvhFs7iHNVUtnSP0YKEg00p9Ih13rlL9zGqvLdePA="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js" integrity="sha512-2rNj2KJ+D8s1ceNasTIex6z4HWyOnEYLVC3FigGOmyQCZc2eBXKgOxQmo3oKLHyfcj53uz4QMsRCWNbLd32Q1g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script type="text/javascript" th:src="@{/js/search.js}"></script>
+
+</head>
+<body>
+<th:block th:replace="navbar :: topbar"></th:block>
+<div class="container">
+    <h1>Build Index</h1>
+    <div class="row">
+        <div class="col">
+            <span>Build your index on directory path</span>
+            <form th:action="@{'/index/build'}" method="post" th:object="${indexInput}">
+                <div class="input-group">
+                <input type="text" class="form-control" id="index" placeholder="Directory" th:field="*{dirPath}">
+                <span class="input-group-btn">
+                 <button type="submit" class="btn btn-default">
+                   <span>Build</span>
+                 </button>
+                </span>
+                </div>
+            </form>
+            </div>
+    </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+volpe0.5582596 = weight(content:volpe in 1) [BM25Similarity], result of:
+  0.5582596 = score(freq=5.0), computed as boost * idf * tf from:
+    0.6931472 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      1 = n, number of documents containing term
+      2 = N, total number of documents with field
+    0.80539834 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      5.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      112.0 = dl, length of field (approximate)
+      111.0 = avgdl, average length of field
+Elapsed time: 71ms

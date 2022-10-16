@@ -1,6 +1,7 @@
 package it.uniroma3.idd.hw2.web.service;
 
 import it.uniroma3.idd.hw2.api.SearchApi;
+import it.uniroma3.idd.hw2.api.SearchApiImpl;
 import it.uniroma3.idd.hw2.web.domain.dto.ResultEntryDTO;
 import it.uniroma3.idd.hw2.web.domain.dto.ResultsDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,8 +10,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class SearchService {
 
-    @Autowired
-    private SearchApi searchApi;
+    private SearchApi searchApi = new SearchApiImpl();
 
     public ResultsDTO getResults(String query) {
         return toResultsDTO(searchApi.getAllResults(query));
