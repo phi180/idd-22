@@ -1,0 +1,4 @@
+Description: created by bar staff at houlighan's, troy, mi.
+Minutes: 1
+Igredients: ['parrot bay coconut rum', 'malibu rum', 'cranberry juice', 'pineapple juice', 'orange juice']
+Steps: ['pour the shots into a glass of ice', 'then fill the glass with equal parts orange juice , cranberry juice , and pineapple juice', 'garnish with a pineapple wedge , an orange slice , and an umbrella']

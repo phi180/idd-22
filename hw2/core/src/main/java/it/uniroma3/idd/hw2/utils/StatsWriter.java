@@ -18,9 +18,9 @@ public class StatsWriter {
         }
 
         String runStatsFile = INDEX_STATS + "/stats_" + timestamp;
-        String content = "Stats result for query: " + queryString;
+        String content = "Stats result for query: " + queryString + "\n";
         try {
-            FileUtils.writeStringToFile(new File(runStatsFile),queryString, "UTF-8", true);
+            FileUtils.writeStringToFile(new File(runStatsFile),content, "UTF-8", true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -35,9 +35,10 @@ public class StatsWriter {
         }
     }
 
-    public static void appendElapsedTime(Long initialTimeStamp, Long endTimeStamp) {
+    public static void appendElapsedTimeAndHits(Long initialTimeStamp, Long endTimeStamp, Long hits) {
         String runStatsFile = INDEX_STATS + "/stats_" + initialTimeStamp;
-        String content = "Elapsed time: " + (endTimeStamp-initialTimeStamp) + "ms";
+        String content = "\nElapsed time: " + (endTimeStamp-initialTimeStamp) + "ms";
+        content += "\nTotal hits: " + hits;
 
         try {
             FileUtils.writeStringToFile(new File(runStatsFile),content, "UTF-8", true);

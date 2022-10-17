@@ -12,7 +12,6 @@ import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
-import org.apache.lucene.queryparser.classic.QueryParserBase;
 import org.apache.lucene.search.*;
 import org.apache.lucene.store.Directory;
 import org.apache.lucene.store.FSDirectory;
@@ -20,9 +19,7 @@ import org.apache.lucene.store.FSDirectory;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 import static it.uniroma3.idd.hw2.utils.constants.Constants.*;
 
@@ -31,19 +28,22 @@ public class SearcherImpl implements Searcher {
     private static final int SEARCH_RESULTS = 10;
 
     @Override
-    public Map<ResultEntry, Float> search(String queryString) {
+    public Set<ResultEntry> search(String queryString) {
         return genericSearch(queryString, QueryType.TERM_QUERY);
     }
-
     @Override
-    public Map<ResultEntry, Float> searchWithParser(String queryString) {
+    public Set<ResultEntry> searchPhraseQuery(String queryString) {
+        return genericSearch(queryString, QueryType.PHRASE_QUERY);
+    }
+    @Override
+    public Set<ResultEntry> searchWithParser(String queryString) {
         return genericSearch(queryString, QueryType.QUERY_PARSER);
     }
 
     /** =================== Private methods ======================= */
 
-    private Map<ResultEntry, Float> genericSearch(String queryString, QueryType queryType) {
-        Map<ResultEntry, Float> results = null;
+    private Set<ResultEntry> genericSearch(String queryString, QueryType queryType) {
+        Set<ResultEntry> results = null;
 
         Path path = Paths.get(INDEX_DIR);
         Query query = generateQuery(queryString, queryType);
@@ -67,6 +67,13 @@ public class SearcherImpl implements Searcher {
         Query query = null;
         if(queryType.equals(QueryType.TERM_QUERY)) {
             query = new TermQuery(new Term(CONTENT, queryString));
+        } else if(queryType.equals(QueryType.PHRASE_QUERY)) {
+            PhraseQuery.Builder pqnb = new PhraseQuery.Builder();
+            String[] phrase = queryString.split(" ");
+            for(String term: phrase) {
+                pqnb.add(new Term(CONTENT, term));
+            }
+            query = pqnb.build();
         } else if(queryType.equals(QueryType.QUERY_PARSER)) {
             QueryParser queryParser = new QueryParser(CONTENT, new WhitespaceAnalyzer());
             try {
@@ -78,8 +85,8 @@ public class SearcherImpl implements Searcher {
         return query;
     }
 
-    private Map<ResultEntry, Float> runQuery(IndexSearcher searcher, String queryString, Query query, boolean explain) throws IOException {
-        Map<ResultEntry, Float> results = new HashMap<>();
+    private Set<ResultEntry> runQuery(IndexSearcher searcher, String queryString, Query query, boolean explain) throws IOException {
+        Set<ResultEntry> results = new TreeSet<>();
 
         Long timestamp = new Date().getTime();
 
@@ -94,7 +101,8 @@ public class SearcherImpl implements Searcher {
             ResultEntry resultEntry = new ResultEntry();
             resultEntry.setDocId(scoreDoc.doc);
             resultEntry.setTitle(doc.get(TITLE));
-            results.put(resultEntry,scoreDoc.score);
+            resultEntry.setRankWeight(scoreDoc.score);
+            results.add(resultEntry);
 
             if (explain) {
                 Explanation explanation = searcher.explain(query, scoreDoc.doc);
@@ -102,9 +110,9 @@ public class SearcherImpl implements Searcher {
             }
         }
 
-        if (explain)
-            StatsWriter.appendElapsedTime(timestamp, new Date().getTime());
-
+        if (explain) {
+            StatsWriter.appendElapsedTimeAndHits(timestamp, new Date().getTime(),hits.totalHits.value);
+        }
         return results;
     }
 

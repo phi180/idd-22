@@ -38,6 +38,7 @@ public class IndexerImpl implements Indexer {
     private List<Class<TokenFilterFactory>> tokenFilterFactoryClasses;
 
     private static final String STOPWORDS_FILE = "stopwords.txt";
+    private IndexWriterConfig config;
 
     private IndexerImpl(IndexerBuilder indexerBuilder) {
         this.dirWithFiles = indexerBuilder.dirWithFiles;
@@ -87,6 +88,7 @@ public class IndexerImpl implements Indexer {
         CustomAnalyzer.Builder contentAnalyzerBuilder = null;
         contentAnalyzerBuilder = CustomAnalyzer.builder()
                         .withTokenizer(this.tokenizerFactoryClass);
+        // TODO read tokenizer params from properties
         for(Class<TokenFilterFactory> tokenFilterFactory : this.tokenFilterFactoryClasses) {
             contentAnalyzerBuilder.addTokenFilter(tokenFilterFactory);
         }
@@ -106,7 +108,6 @@ public class IndexerImpl implements Indexer {
             String fileToBeIndexed = directorySeeker.next();
 
             Extensions extension = Extensions.fromString(FilenameUtils.getExtension(fileToBeIndexed));
-
             if(extension != null) {
                 Document doc = new Document();
                 doc.add(new StringField(TITLE, fileToBeIndexed, Field.Store.YES));
