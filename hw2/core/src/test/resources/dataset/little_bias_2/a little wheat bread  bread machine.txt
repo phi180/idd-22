@@ -1,0 +1,4 @@
+Description: this is a great recipe. the bread is light and a high riser too!!! 1-1/2lb. loaf
+Minutes: 255
+Igredients: ['yeast', 'wheat flour', 'white flour', 'sugar', 'salt', 'honey', 'olive oil', 'water']
+Steps: ['place ingredients Minutes in bread machine in the Minutes order suggested by the manufacture Minutes', 'select light crust basic white bread Minutes setting']

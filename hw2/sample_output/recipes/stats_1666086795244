@@ -1,0 +1,114 @@
+Stats result for query: chocolate
+2.3708642 = weight(content:chocolate in 18597) [BM25Similarity], result of:
+  2.3708642 = score(freq=19.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.91452885 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      19.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      248.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.3568187 = weight(content:chocolate in 27710) [BM25Similarity], result of:
+  2.3568187 = score(freq=13.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.90911096 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      13.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      168.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.355349 = weight(content:chocolate in 11283) [BM25Similarity], result of:
+  2.355349 = score(freq=7.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.9085441 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      7.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      68.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.3522873 = weight(content:chocolate in 12347) [BM25Similarity], result of:
+  2.3522873 = score(freq=9.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.90736306 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      9.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      104.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.3504512 = weight(content:chocolate in 19835) [BM25Similarity], result of:
+  2.3504512 = score(freq=8.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.9066549 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      8.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      88.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.348095 = weight(content:chocolate in 18039) [BM25Similarity], result of:
+  2.348095 = score(freq=7.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.905746 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      7.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      72.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.3449607 = weight(content:chocolate in 19294) [BM25Similarity], result of:
+  2.3449607 = score(freq=6.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.90453696 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      6.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      56.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.3449607 = weight(content:chocolate in 19614) [BM25Similarity], result of:
+  2.3449607 = score(freq=6.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.90453696 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      6.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      56.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.3436286 = weight(content:chocolate in 15589) [BM25Similarity], result of:
+  2.3436286 = score(freq=10.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.9040231 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      10.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      128.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+2.343058 = weight(content:chocolate in 15903) [BM25Similarity], result of:
+  2.343058 = score(freq=14.0), computed as boost * idf * tf from:
+    2.5924432 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      17226 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.90380305 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      14.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      200.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+
+Elapsed time: 20881ms
+Total hits: 1242

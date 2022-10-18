@@ -4,13 +4,14 @@ import it.uniroma3.idd.hw2.engine.index.Indexer;
 import it.uniroma3.idd.hw2.filesystem.DirectorySeeker;
 import it.uniroma3.idd.hw2.filesystem.Extensions;
 import it.uniroma3.idd.hw2.filesystem.impl.DirectorySeekerImpl;
-import it.uniroma3.idd.hw2.utils.StopwordsReader;
+import it.uniroma3.idd.hw2.utils.PropertiesReader;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.lucene.analysis.*;
 import org.apache.lucene.analysis.core.StopFilterFactory;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.custom.CustomAnalyzer;
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
+import org.apache.lucene.analysis.ngram.NGramTokenizerFactory;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.codecs.simpletext.SimpleTextCodec;
 import org.apache.lucene.document.Document;
@@ -39,6 +40,7 @@ public class IndexerImpl implements Indexer {
     private List<Class<TokenFilterFactory>> tokenFilterFactoryClasses;
 
     private static final String STOPWORDS_FILE = "stopwords.txt";
+    private IndexWriterConfig config;
 
     private IndexerImpl(IndexerBuilder indexerBuilder) {
         this.dirWithFiles = indexerBuilder.dirWithFiles;
@@ -87,7 +89,8 @@ public class IndexerImpl implements Indexer {
         perFieldAnalyzers.put(TITLE, new WhitespaceAnalyzer());
         CustomAnalyzer.Builder contentAnalyzerBuilder = null;
         contentAnalyzerBuilder = CustomAnalyzer.builder()
-                        .withTokenizer(this.tokenizerFactoryClass);
+                        .withTokenizer(this.tokenizerFactoryClass, PropertiesReader.readTokenizerFactoryParams());
+
         for(Class<TokenFilterFactory> tokenFilterFactory : this.tokenFilterFactoryClasses) {
             contentAnalyzerBuilder.addTokenFilter(tokenFilterFactory);
         }
@@ -107,7 +110,6 @@ public class IndexerImpl implements Indexer {
             String fileToBeIndexed = directorySeeker.next();
 
             Extensions extension = Extensions.fromString(FilenameUtils.getExtension(fileToBeIndexed));
-
             if(extension != null) {
                 Document doc = new Document();
                 doc.add(new StringField(TITLE, fileToBeIndexed, Field.Store.YES));

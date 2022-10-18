@@ -4,17 +4,15 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
-class IndexBuildApiImplTest {
+class IndexApiImplTest {
 
     private static final String dirPath = "src/test/resources/dummy";
 
-    private IndexBuildApi indexBuildApi;
+    private IndexApi indexApi;
 
     @BeforeEach
     void setUp() {
-        indexBuildApi = new IndexBuildApiImpl();
+        indexApi = new IndexApiImpl();
     }
 
     @AfterEach
@@ -23,6 +21,6 @@ class IndexBuildApiImplTest {
 
     @Test // not a test
     void testBuildIndex() {
-        indexBuildApi.buildIndex(dirPath);
+        indexApi.buildIndex(dirPath);
     }
 }

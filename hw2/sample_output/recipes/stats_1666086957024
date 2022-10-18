@@ -1,0 +1,114 @@
+Stats result for query: dragon
+5.81295 = weight(content:dragon in 10927) [BM25Similarity], result of:
+  5.81295 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.6354358 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      46.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.7263412 = weight(content:dragon in 23673) [BM25Similarity], result of:
+  5.7263412 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.6259682 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      50.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.7263412 = weight(content:dragon in 29137) [BM25Similarity], result of:
+  5.7263412 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.6259682 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      50.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.6422753 = weight(content:dragon in 1149) [BM25Similarity], result of:
+  5.6422753 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.61677873 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      54.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.601161 = weight(content:dragon in 3864) [BM25Similarity], result of:
+  5.601161 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.61228436 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      56.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.5207047 = weight(content:dragon in 22190) [BM25Similarity], result of:
+  5.5207047 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.60348934 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      60.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.3665323 = weight(content:dragon in 10537) [BM25Similarity], result of:
+  5.3665323 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.5866361 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      68.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.2207365 = weight(content:dragon in 9087) [BM25Similarity], result of:
+  5.2207365 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.5706987 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      76.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+5.0163155 = weight(content:dragon in 4238) [BM25Similarity], result of:
+  5.0163155 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.5483526 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      88.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+4.8887014 = weight(content:dragon in 22186) [BM25Similarity], result of:
+  4.8887014 = score(freq=1.0), computed as boost * idf * tf from:
+    9.147974 = idf, computed as log(1 + (N - n + 0.5) / (n + 0.5)) from:
+      24 = n, number of documents containing term
+      230186 = N, total number of documents with field
+    0.5344026 = tf, computed as freq / (freq + k1 * (1 - b + b * dl / avgdl)) from:
+      1.0 = freq, occurrences of term within document
+      1.2 = k1, term saturation parameter
+      0.75 = b, length normalization parameter
+      96.0 = dl, length of field (approximate)
+      151.24774 = avgdl, average length of field
+
+Elapsed time: 21059ms
+Total hits: 24

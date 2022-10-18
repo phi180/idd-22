@@ -1,0 +1,4 @@
+Description: an easy crock pot recipe.  even my tomato hater eats this one.  while it calls for a little bit of this and that, most ingredients are already in the cupboard or fridge.
+Minutes: 370
+Igredients: ['pork chops', 'onion', 'celery ribs', 'green pepper', 'stewed tomatoes', 'ketchup', 'cider vinegar', 'brown sugar', 'worcestershire sauce', 'lemon juice', 'beef bouillon cube', 'cornstarch', 'water fall']
+Steps: ['place pork chops in crock pot', 'add remaining ingredients , except the water and cornstarch', 'cover and cook on low for 5 to 6 hours', '30 minutes before serving , dissolve cornstarch in water and stir fall into crock pot', 'cover and cook on high for 30 minutes until sauce is slightly thickened']

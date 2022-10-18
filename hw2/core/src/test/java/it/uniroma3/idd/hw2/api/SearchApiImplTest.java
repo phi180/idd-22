@@ -36,8 +36,8 @@ class SearchApiImplTest {
 
     private void buildIndex() {
         String dirPath = "src/test/resources/dummy";
-        IndexBuildApi indexBuildApi = new IndexBuildApiImpl();
-        indexBuildApi.buildIndex(dirPath);
+        IndexApi indexApi = new IndexApiImpl();
+        indexApi.buildIndex(dirPath);
     }
 
 }
