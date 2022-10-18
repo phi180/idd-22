@@ -33,7 +33,7 @@ public class SearchApiImpl implements SearchApi {
         ResultsDTO resultsDTO = new ResultsDTO();
 
         Searcher searcher = new SearcherImpl();
-        Set<ResultEntry> scoreDocs = searcher.search(query);
+        Set<ResultEntry> scoreDocs = searcher.searchPhraseQuery(query);
 
         resultsDTO.getResultListDTO().addAll(scoreDocs.stream()
                 .map(resultEntry -> toResultEntryDTO(resultEntry))

@@ -5,12 +5,10 @@ import org.apache.lucene.search.Explanation;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Date;
+
+import static it.uniroma3.idd.hw2.utils.constants.Constants.INDEX_STATS;
 
 public class StatsWriter {
-
-    private static final String INDEX_STATS = "./index_stats";
-
     public static void initStatsFile(String queryString, Long timestamp) {
         File statsDir = new File(INDEX_STATS);
         if (!statsDir.exists()){

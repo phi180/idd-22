@@ -1,16 +1,23 @@
 package it.uniroma3.idd.hw2.web.service;
 
-import it.uniroma3.idd.hw2.api.IndexBuildApi;
-import it.uniroma3.idd.hw2.api.IndexBuildApiImpl;
-import org.springframework.beans.factory.annotation.Autowired;
+import it.uniroma3.idd.hw2.api.IndexApi;
+import it.uniroma3.idd.hw2.api.IndexApiImpl;
 import org.springframework.stereotype.Service;
 
 @Service
 public class IndexService {
-    private IndexBuildApi indexBuildApi = new IndexBuildApiImpl();
+    private IndexApi indexApi = new IndexApiImpl();
 
     public void buildIndex(String dirPath) {
-        indexBuildApi.buildIndex(dirPath);
+        indexApi.buildIndex(dirPath);
+    }
+
+    public void deleteIndex() {
+        indexApi.deleteIndex();
+    }
+
+    public void deleteIndexAndStats() {
+        indexApi.deleteIndexAndStats();
     }
 
 }

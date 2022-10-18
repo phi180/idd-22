@@ -12,8 +12,9 @@ import java.io.IOException;
 import java.util.List;
 
 import static it.uniroma3.idd.hw2.utils.constants.Constants.INDEX_DIR;
+import static it.uniroma3.idd.hw2.utils.constants.Constants.INDEX_STATS;
 
-public class IndexBuildApiImpl implements IndexBuildApi {
+public class IndexApiImpl implements IndexApi {
 
     @Override
     public void buildIndex(String dirPath) {
@@ -33,6 +34,25 @@ public class IndexBuildApiImpl implements IndexBuildApi {
 
         try {
             indexer.buildIndex();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteIndex() {
+        try {
+            FileUtils.forceDelete(new File(INDEX_DIR));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public void deleteIndexAndStats() {
+        try {
+            FileUtils.forceDelete(new File(INDEX_DIR));
+            FileUtils.forceDelete(new File(INDEX_STATS));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

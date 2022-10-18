@@ -28,6 +28,20 @@ public class IndexController {
     public String buildIndex(@ModelAttribute("indexForm") BuildIndexInput buildIndexInput, Model model) {
         logger.info("IndexController - buildIndex(): dirPath=" + buildIndexInput.getDirPath());
         indexService.buildIndex(buildIndexInput.getDirPath());
+        return "redirect:/search";
+    }
+
+    @RequestMapping(value="/index/delete",method = RequestMethod.GET)
+    public String deleteIndex(Model model) {
+        logger.info("IndexController - deleteIndex()");
+        indexService.deleteIndex();
+        return "redirect:/index";
+    }
+
+    @RequestMapping(value="/index/deleteAll",method = RequestMethod.GET)
+    public String deleteIndexAndStats(Model model) {
+        logger.info("IndexController - deleteIndexAndStats()");
+        indexService.deleteIndexAndStats();
         return "redirect:/index";
     }
 

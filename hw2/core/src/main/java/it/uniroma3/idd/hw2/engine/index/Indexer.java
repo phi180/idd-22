@@ -4,4 +4,6 @@ import java.io.IOException;
 
 public interface Indexer {
     void buildIndex() throws IOException;
+
+
 }

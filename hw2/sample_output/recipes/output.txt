@@ -1,0 +1,44 @@
+Oct 18, 2022 11:31:48 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:31:48 AM it.uniroma3.idd.hw2.utils.PropertiesReader readTokenizer
+INFO: readTokenizer() - tokenizer=WhitespaceTokenizerFactory
+Oct 18, 2022 11:31:48 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:31:48 AM it.uniroma3.idd.hw2.utils.PropertiesReader readTokenFilters
+INFO: readTokenFilters() - filters=[Ljava.lang.String;@4ddced80
+Oct 18, 2022 11:32:01 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:32:01 AM it.uniroma3.idd.hw2.utils.PropertiesReader readTokenizerFactoryParams
+INFO: readTokenizerFactoryParams() - params=
+
+==== Index built successfully ====
+1.86GB index size
+
+Oct 18, 2022 11:53:15 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:53:15 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true
+Oct 18, 2022 11:53:55 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:53:55 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true
+Oct 18, 2022 11:54:35 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:54:35 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true
+Oct 18, 2022 11:55:15 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:55:15 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true
+Oct 18, 2022 11:55:57 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:55:57 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true
+Oct 18, 2022 11:56:55 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:56:55 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true
+Oct 18, 2022 11:57:41 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
+INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\target\test-classes\lucene.properties
+Oct 18, 2022 11:57:41 AM it.uniroma3.idd.hw2.utils.PropertiesReader readExplainProperty
+INFO: readExplainProperty() - explain=true

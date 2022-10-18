@@ -12,9 +12,7 @@ import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.logging.Logger;
 
 public class PropertiesReader {
@@ -80,6 +78,27 @@ public class PropertiesReader {
             ex.printStackTrace();
         }
         return false;
+    }
+
+    public static Map<String,String> readTokenizerFactoryParams() {
+        Map<String,String> param2val = new HashMap<>();
+
+        try (InputStream input = new FileInputStream(getPropertiesFullPath(PROPERTIES_FILE))) {
+            Properties prop = new Properties();
+            prop.load(input);
+            String paramsProp = prop.getProperty("tokenizerParams");
+            logger.info("readTokenizerFactoryParams() - params="+paramsProp);
+
+            if(!paramsProp.equals("")) {
+                String[] params = paramsProp.split(",");
+                for (int i = 0; i < params.length; i += 2) {
+                    param2val.put(params[i], params[i + 1]);
+                }
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+        return param2val;
     }
 
 }

@@ -8,6 +8,7 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.HashMap;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -25,6 +26,11 @@ class PropertiesReaderTest {
     @Test
     void testTokenizerRead() {
         assertEquals(WhitespaceTokenizerFactory.class, PropertiesReader.readTokenizer());
+    }
+
+    @Test
+    void testTokenizerParamsRead() {
+        assertEquals(new HashMap<>(), PropertiesReader.readTokenizerFactoryParams());
     }
 
     @Test
