@@ -11,7 +11,6 @@ import org.apache.lucene.analysis.core.StopFilterFactory;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
 import org.apache.lucene.analysis.custom.CustomAnalyzer;
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
-import org.apache.lucene.analysis.ngram.NGramTokenizerFactory;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.codecs.simpletext.SimpleTextCodec;
 import org.apache.lucene.document.Document;
@@ -40,7 +39,6 @@ public class IndexerImpl implements Indexer {
     private List<Class<TokenFilterFactory>> tokenFilterFactoryClasses;
 
     private static final String STOPWORDS_FILE = "stopwords.txt";
-    private IndexWriterConfig config;
 
     private IndexerImpl(IndexerBuilder indexerBuilder) {
         this.dirWithFiles = indexerBuilder.dirWithFiles;

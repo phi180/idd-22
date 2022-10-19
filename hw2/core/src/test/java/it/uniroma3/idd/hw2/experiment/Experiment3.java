@@ -45,6 +45,12 @@ public class Experiment3 {
         assertTrue(resultsDTO12.getResultListDTO().get(1).getFileName().endsWith("a little of everything pork chops.txt"));
         assertTrue(resultsDTO12.getResultListDTO().get(2).getFileName().endsWith("a little more devil in these eggs.txt"));
         assertTrue(resultsDTO12.getResultListDTO().get(3).getFileName().endsWith("a little piece of heaven on a plate.txt"));
+
+        assertTrue(resultsDTO22.getResultListDTO().get(0).getFileName().endsWith("a lulu of a wrap.txt"));
+        assertTrue(resultsDTO22.getResultListDTO().get(1).getFileName().endsWith("a little wheat bread  bread machine.txt"));
+        assertTrue(resultsDTO22.getResultListDTO().get(2).getFileName().endsWith("a little of everything pork chops.txt"));
+        assertTrue(resultsDTO22.getResultListDTO().get(3).getFileName().endsWith("a little more devil in these eggs.txt"));
+        assertTrue(resultsDTO22.getResultListDTO().get(4).getFileName().endsWith("a little piece of heaven on a plate.txt"));
     }
 
     /** Private methods */

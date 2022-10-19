@@ -24,10 +24,10 @@ public class StatsWriter {
         }
     }
 
-    public static void writeStats(Long timestamp, Explanation explanation) {
+    public static void writeStats(Long timestamp, String docTitle, Explanation explanation) {
         String runStatsFile = INDEX_STATS + "/stats_" + timestamp;
         try {
-            FileUtils.writeStringToFile(new File(runStatsFile),explanation.toString(), "UTF-8", true);
+            FileUtils.writeStringToFile(new File(runStatsFile),docTitle + "\n" +explanation.toString(), "UTF-8", true);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

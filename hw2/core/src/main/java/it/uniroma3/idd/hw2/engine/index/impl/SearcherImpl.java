@@ -106,7 +106,7 @@ public class SearcherImpl implements Searcher {
 
             if (explain) {
                 Explanation explanation = searcher.explain(query, scoreDoc.doc);
-                StatsWriter.writeStats(timestamp, explanation);
+                StatsWriter.writeStats(timestamp, doc.get(TITLE), explanation);
             }
         }
 
