@@ -11,6 +11,7 @@ INFO: getPropertiesFullPath() - path=C:\Users\fippi\IdeaProjects\Idd\hw2\core\ta
 Oct 18, 2022 10:54:41 AM it.uniroma3.idd.hw2.utils.PropertiesReader readTokenizerFactoryParams
 
 ===== Index built successfully =====
+181MB index size
 
 INFO: readTokenizerFactoryParams() - params=
 Oct 18, 2022 10:57:03 AM it.uniroma3.idd.hw2.utils.PropertiesReader getPropertiesFullPath
