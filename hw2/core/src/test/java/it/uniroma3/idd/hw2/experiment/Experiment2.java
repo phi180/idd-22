@@ -22,8 +22,10 @@ public class Experiment2 {
 
     private SearchApi searchApi;
 
-    @Test
+    //@Test
     public void runExperiment() {
+        /** if you want to run this experiment, change "content" column to StringField */
+
         buildIndex();
 
         searchApi = new SearchApiImpl();
