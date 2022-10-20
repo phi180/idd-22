@@ -48,19 +48,13 @@ public class SearchApiImpl implements SearchApi {
         ResultsDTO resultsDTO = new ResultsDTO();
 
         Searcher searcher = new SearcherImpl();
-        Set<ResultEntry> scoreDocs = searcher.search(query);
+        Set<ResultEntry> scoreDocs = searcher.searchWithParser(query);
 
         resultsDTO.getResultListDTO().addAll(scoreDocs.stream()
                 .map(resultEntry -> toResultEntryDTO(resultEntry))
                 .collect(Collectors.toList()));
 
         return resultsDTO;
-    }
-
-    @Override
-    public PaginatedResultsDTO getPaginatedResults(String query, int pageNumber, int pageSize) {
-        // TODO
-        return null;
     }
 
     /* =================== DTO CONVERTERS ====================== */

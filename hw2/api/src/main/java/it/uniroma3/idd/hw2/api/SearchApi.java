@@ -10,8 +10,4 @@ public interface SearchApi {
 
     ResultsDTO getAllResultsWithParser(String query);
 
-    /**
-     * @return paginated results returned by index
-     * */
-    PaginatedResultsDTO getPaginatedResults(String query, int pageNumber, int pageSize);
 }

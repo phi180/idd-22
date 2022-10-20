@@ -30,9 +30,9 @@ public class Experiment4 {
         buildIndex();
 
         searchApi = new SearchApiImpl();
-        assertEquals(4,searchApi.getAllResultsPhrase(SECOND_QUERY).getResultListDTO().size());
 
         assertEquals(1,searchApi.getAllResultsPhrase(FIRST_QUERY).getResultListDTO().size());
+        assertEquals(4,searchApi.getAllResultsPhrase(SECOND_QUERY).getResultListDTO().size());
         assertEquals(1,searchApi.getAllResultsPhrase(THIRD_QUERY).getResultListDTO().size());
         assertEquals(2,searchApi.getAllResultsPhrase(FOURTH_QUERY).getResultListDTO().size());
     }

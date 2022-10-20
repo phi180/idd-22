@@ -11,8 +11,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.logging.Logger;
+
 @Controller
 public class SearchController {
+
+    private static final Logger logger = Logger.getLogger(SearchController.class.toString());
 
     @Autowired
     private SearchService searchService;
@@ -25,6 +29,8 @@ public class SearchController {
 
     @RequestMapping(value="/search/results",method = RequestMethod.POST)
     public String search(Model model, @ModelAttribute("queryForm") SearchInput searchInput) {
+        logger.info("SearchController - search(): searchInput="+searchInput.toString());
+
         ResultsDTO resultsDTO = null;
         if(searchInput.getAdvancedSearch()) {
             resultsDTO = searchService.getResultsParser(searchInput.getSearchField());
