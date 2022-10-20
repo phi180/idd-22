@@ -110,7 +110,7 @@ public class IndexerImpl implements Indexer {
             Extensions extension = Extensions.fromString(FilenameUtils.getExtension(fileToBeIndexed));
             if(extension != null) {
                 Document doc = new Document();
-                doc.add(new StringField(TITLE, fileToBeIndexed, Field.Store.YES));
+                doc.add(new TextField(TITLE, fileToBeIndexed, Field.Store.YES));
                 doc.add(new TextField(CONTENT, extension.getFileReader().readContent(fileToBeIndexed), Field.Store.NO));
                 writer.addDocument(doc);
             }

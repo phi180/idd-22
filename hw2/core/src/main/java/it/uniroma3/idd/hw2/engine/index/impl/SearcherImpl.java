@@ -10,6 +10,7 @@ import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
 import org.apache.lucene.index.Term;
+import org.apache.lucene.queryparser.classic.MultiFieldQueryParser;
 import org.apache.lucene.queryparser.classic.ParseException;
 import org.apache.lucene.queryparser.classic.QueryParser;
 import org.apache.lucene.search.*;
@@ -20,10 +21,13 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
+import java.util.logging.Logger;
 
 import static it.uniroma3.idd.hw2.utils.constants.Constants.*;
 
 public class SearcherImpl implements Searcher {
+
+    private static final Logger logger = Logger.getLogger(SearcherImpl.class.toString());
 
     private static final int SEARCH_RESULTS = 10;
 
@@ -43,6 +47,8 @@ public class SearcherImpl implements Searcher {
     /** =================== Private methods ======================= */
 
     private Set<ResultEntry> genericSearch(String queryString, QueryType queryType) {
+        logger.info("SearcherImpl - genericSearch(): queryString="+queryString+", queryType="+queryType.toString());
+
         Set<ResultEntry> results = null;
 
         Path path = Paths.get(INDEX_DIR);
@@ -64,18 +70,36 @@ public class SearcherImpl implements Searcher {
 
 
     private Query generateQuery(String queryString, QueryType queryType) {
+        logger.info("SearcherImpl - generateQuery(): queryString="+queryString+", queryType="+queryType.toString());
+
         Query query = null;
         if(queryType.equals(QueryType.TERM_QUERY)) {
-            query = new TermQuery(new Term(CONTENT, queryString));
+            TermQuery tq1 = new TermQuery(new Term(TITLE, queryString));
+            TermQuery tq2 = new TermQuery(new Term(CONTENT, queryString));
+
+            query = new BooleanQuery.Builder()
+                    .add(new BooleanClause(tq1, BooleanClause.Occur.SHOULD))
+                    .add(new BooleanClause(tq2, BooleanClause.Occur.SHOULD))
+                    .build();
         } else if(queryType.equals(QueryType.PHRASE_QUERY)) {
-            PhraseQuery.Builder pqnb = new PhraseQuery.Builder();
             String[] phrase = queryString.split(" ");
+
+            PhraseQuery.Builder pqnb1 = new PhraseQuery.Builder();
             for(String term: phrase) {
-                pqnb.add(new Term(CONTENT, term));
+                pqnb1.add(new Term(TITLE, term));
             }
-            query = pqnb.build();
+
+            PhraseQuery.Builder pqnb2 = new PhraseQuery.Builder();
+            for(String term: phrase) {
+                pqnb2.add(new Term(CONTENT, term));
+            }
+
+            query = new BooleanQuery.Builder()
+                    .add(new BooleanClause(pqnb1.build(), BooleanClause.Occur.SHOULD))
+                    .add(new BooleanClause(pqnb2.build(), BooleanClause.Occur.SHOULD))
+                    .build();
         } else if(queryType.equals(QueryType.QUERY_PARSER)) {
-            QueryParser queryParser = new QueryParser(CONTENT, new WhitespaceAnalyzer());
+            MultiFieldQueryParser queryParser = new MultiFieldQueryParser(new String[] {TITLE,CONTENT}, new WhitespaceAnalyzer());
             try {
                 query = queryParser.parse(queryString);
             } catch (ParseException e) {
