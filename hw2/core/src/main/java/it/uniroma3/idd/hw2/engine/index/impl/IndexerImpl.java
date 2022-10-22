@@ -9,13 +9,14 @@ import org.apache.commons.io.FilenameUtils;
 import org.apache.lucene.analysis.*;
 import org.apache.lucene.analysis.core.StopFilterFactory;
 import org.apache.lucene.analysis.core.WhitespaceAnalyzer;
+import org.apache.lucene.analysis.core.WhitespaceTokenizerFactory;
 import org.apache.lucene.analysis.custom.CustomAnalyzer;
 import org.apache.lucene.analysis.miscellaneous.PerFieldAnalyzerWrapper;
+import org.apache.lucene.analysis.miscellaneous.WordDelimiterGraphFilterFactory;
 import org.apache.lucene.analysis.standard.StandardAnalyzer;
 import org.apache.lucene.codecs.simpletext.SimpleTextCodec;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.document.Field;
-import org.apache.lucene.document.StringField;
 import org.apache.lucene.document.TextField;
 import org.apache.lucene.index.IndexWriter;
 import org.apache.lucene.index.IndexWriterConfig;
@@ -84,7 +85,8 @@ public class IndexerImpl implements Indexer {
 
         Analyzer defaultAnalyzer = new StandardAnalyzer();
         Map<String, Analyzer> perFieldAnalyzers = new HashMap<>();
-        perFieldAnalyzers.put(TITLE, new WhitespaceAnalyzer());
+        perFieldAnalyzers.put(TITLE, CustomAnalyzer.builder().withTokenizer(WhitespaceTokenizerFactory.class).addTokenFilter(WordDelimiterGraphFilterFactory.class).build());
+
         CustomAnalyzer.Builder contentAnalyzerBuilder = null;
         contentAnalyzerBuilder = CustomAnalyzer.builder()
                         .withTokenizer(this.tokenizerFactoryClass, PropertiesReader.readTokenizerFactoryParams());
@@ -119,4 +121,6 @@ public class IndexerImpl implements Indexer {
         writer.commit();
         writer.close();
     }
+
+
 }

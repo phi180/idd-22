@@ -1,17 +1,16 @@
 package it.uniroma3.idd.hw2.api;
 
-import it.uniroma3.idd.hw2.dto.PaginatedResultsDTO;
 import it.uniroma3.idd.hw2.dto.ResultEntryDTO;
 import it.uniroma3.idd.hw2.dto.ResultsDTO;
 import it.uniroma3.idd.hw2.engine.entity.ResultEntry;
 import it.uniroma3.idd.hw2.engine.index.Searcher;
 import it.uniroma3.idd.hw2.engine.index.impl.SearcherImpl;
+import org.springframework.stereotype.Component;
 
-import java.util.Collections;
-import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
 
+@Component
 public class SearchApiImpl implements SearchApi {
 
     @Override

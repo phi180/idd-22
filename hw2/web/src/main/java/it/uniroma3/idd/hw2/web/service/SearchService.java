@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class SearchService {
 
-    private SearchApi searchApi = new SearchApiImpl();
+    @Autowired
+    private SearchApi searchApi;
 
     public ResultsDTO getResults(String query) {
         return toResultsDTO(searchApi.getAllResults(query));
