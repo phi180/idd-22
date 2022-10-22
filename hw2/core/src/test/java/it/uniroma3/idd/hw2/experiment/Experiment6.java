@@ -4,6 +4,7 @@ import it.uniroma3.idd.hw2.api.IndexApi;
 import it.uniroma3.idd.hw2.api.IndexApiImpl;
 import it.uniroma3.idd.hw2.api.SearchApi;
 import it.uniroma3.idd.hw2.api.SearchApiImpl;
+import it.uniroma3.idd.hw2.utils.TestUtils;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,9 +15,9 @@ public class Experiment6 {
      * Target: study performance with several index size and queries, not correctness
      * */
 
-    private static final String DATASET_ADDR_POEMS = "C:\\Users\\fippi\\datasets\\hw2\\poems";
+    private static final String DATASET_ADDR_POEMS = TestUtils.getFileInResources("dataset/poems");
 
-    private static final String DATASET_ADDR_RECIPES = "C:\\Users\\fippi\\datasets\\hw2\\recipes";
+    private static final String DATASET_ADDR_RECIPES = TestUtils.getFileInResources("dataset/recipes");
 
     private static final String[] QUERIES_RECIPE = {"chocolate","cookie","cake","pasta","dragon","java","google"};
 
