@@ -1,0 +1,6 @@
+Timestamp: 1667222833500
+Query tokens:  | - | barnsley  | - | port vale  | - | crewe alexandra 
+5a70aaf5c868a712fd75c602:5
+5a70b0a1c868a712fd765280:0
+5a70b3cbc868a712fd769c9a:0
+Elapsed time: 1141372ms

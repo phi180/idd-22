@@ -1,0 +1,5 @@
+Timestamp: 1667232271614
+Query tokens:  | - | commander of 31 infanteriedivision 20 january 1942 24 february 1942  | - | commander of 82 infanteriedivision 1 april 1942 6 july 1942  | - | commander of 31 infanteriedivision 15 may 1943 2 august 1943  | - | commander of lvi panzer corps 1 august 1943 14 november 1943  | - | commander of lvi panzer corps 9 december 1943 14 june 1944  | - | commander of 4 armee 18 july 1944 29 january 1945 
+5a70bf9dc868a712fd7782ba:1
+5a70a82ac868a712fd7584a8:1
+Elapsed time: 10ms

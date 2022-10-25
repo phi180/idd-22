@@ -1,0 +1,154 @@
+{
+    "_id": {
+        "$oid": "ubuntu3489u934"
+    },
+    "className": "it.uniroma3.WikiTEF.model.Table.Table",
+    "id": "TEST3",
+    "cells": [
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Versione",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 0
+            },
+            "cleanedText": "Versione"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Nome",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 1
+            },
+            "cleanedText": "Nome"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Rilascio",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 2
+            },
+            "cleanedText": "Rilascio"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "14.04",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 0
+            },
+            "cleanedText": "14.04"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Trusty Tahr",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 1
+            },
+            "cleanedText": "Trusty Tahr"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "17 marzo 2014",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 2
+            },
+            "cleanedText": "17 marzo 2014"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "16.04",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 0
+            },
+            "cleanedText": "16.04"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Xenial Xerus",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 1
+            },
+            "cleanedText": "Xenial Xerus"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "21 aprile 2016",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 2
+            },
+            "cleanedText": "21 aprile 2016"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "20.04",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 0
+            },
+            "cleanedText": "20.04"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Focal Fossa",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 1
+            },
+            "cleanedText": "Focal Fossa"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "23 aprile 2020",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 2
+            },
+            "cleanedText": "23 aprile 2020"
+        }
+    ],
+    "beginIndex": "0",
+    "endIndex": "0",
+    "referenceContext": "TEST",
+    "type": "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#OffsetBasedString",
+    "classe": "wikitable",
+    "maxDimensions": {
+        "row": 4,
+        "column": 3
+    },
+    "headersCleaned": [
+        "agg."
+    ],
+    "keyColumn": 0
+}
