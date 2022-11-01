@@ -1,0 +1,5 @@
+Timestamp: 1667140941415
+Query tokens: milano | - | 
+citta4895843uu394:0 = Milano
+citta4895843uu394:2 = Milano
+Elapsed 2ms

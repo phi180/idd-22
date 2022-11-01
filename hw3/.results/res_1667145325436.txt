@@ -1,0 +1,4 @@
+Timestamp: 1667145325436
+Query tokens: lazio | - | 
+citta4895843uu394:1 = ColumnVO(header=null, cells={0=CellVO(content=Regione), 1=CellVO(content=Lazio), 2=CellVO(content=Lombardia), 3=CellVO(content=Toscana)})
+Elapsed 19ms

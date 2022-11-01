@@ -1,0 +1,5 @@
+Timestamp: 1667152541770
+Query tokens: ------australian | - | championships | - | ------australian | - | championships | - | ------world | - | championships | - | ------world | - | cup | - | ------world | - | cup | - | ------wellington | - | winter | - | championships | - | ------state | - | teams | - | championships | - | ------australian | - | championships | - | ------world | - | cup | - | ------world | - | championships | - | ------new | - | zealand | - | championships | - | ------new | - | zealand | - | state | - | championships | - | ------new | - | zealand | - | championships | - | ------new | - | zealand | - | championships | - | ------ | - | ------new | - | zealand | - | championships | - | ------world | - | championships | - | ------world | - | championships | - | ------ | - | ------ | - | ------ | - | 
+5a70b0dcc868a712fd76584d:1 = 
+Elapsed 460349ms5a70b0dcc868a712fd765850:2 = 
+Elapsed 460350ms

@@ -1,0 +1,6 @@
+Timestamp: 1667151416884
+Query tokens: ------23x15px | - | patricio | - | calero | - | ecu | - | ------23x15px | - | william | - | urina | - | col | - | ------23x15px | - | hctor | - | manzanilla | - | ven | - | ------23x15px | - | jesus | - | cuellar | - | arg | - | ------23x15px | - | darley | - | perez | - | col | - | ------23x15px | - | myke | - | carvalho | - | bra | - | ------23x15px | - | jaime | - | cortez | - | ecu | - | ------23x15px | - | alfonso | - | blanco | - | ven | - | ------23x15px | - | eleider | - | alvarez | - | col | - | ------23x15px | - | jos | - | payares | - | ven | - | ------23x15px | - | antnio | - | rogrio | - | nogueira | - | bra | - | 
+5a70b7adc868a712fd76e106:2 = 
+5a70b441c868a712fd76a4ef:0 = 
+5a7093e0c868a712fd736550:0 = 
+Elapsed 281041ms

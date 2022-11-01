@@ -1,0 +1,8 @@
+Timestamp: 1667140941407
+Query tokens: roma | - | 
+presidenti4834r439:1 = Roma
+citta4895843uu394:2 = Roma
+presidenti4834r439:1 = Roma
+citta4895843uu394:0 = Roma
+presidenti4834r439:1 = Roma
+Elapsed 7ms
