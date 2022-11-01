@@ -1,0 +1,198 @@
+{
+    "_id": {
+        "$oid": "citta4895843uu394"
+    },
+    "className": "it.uniroma3.WikiTEF.model.Table.Table",
+    "id": "TEST2",
+    "cells": [
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Nome",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 0
+            },
+            "cleanedText": "Nome"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Regione",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 1
+            },
+            "cleanedText": "Regione"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Provincia",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 2
+            },
+            "cleanedText": "Provincia"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellHeader",
+            "innerHTML": "Abitanti",
+            "isHeader": true,
+            "type": "HEADER",
+            "Coordinates": {
+                "row": 0,
+                "column": 3
+            },
+            "cleanedText": "Abitanti"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Roma",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 0
+            },
+            "cleanedText": "Roma"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Lazio",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 1
+            },
+            "cleanedText": "Lazio"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Roma",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 2
+            },
+            "cleanedText": "Roma"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "2758280",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 3
+            },
+            "cleanedText": "2758280"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Milano",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 0
+            },
+            "cleanedText": "Milano"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Lombardia",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 1
+            },
+            "cleanedText": "Lombardia"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Milano",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 2
+            },
+            "cleanedText": "Milano"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "1372948",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 1,
+                "column": 3
+            },
+            "cleanedText": "1372948"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Firenze",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 0
+            },
+            "cleanedText": "Firenze"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Toscana",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 1
+            },
+            "cleanedText": "Toscana"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "Firenze",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 2
+            },
+            "cleanedText": "Firenze"
+        },
+        {
+            "className": "it.uniroma3.WikiTEF.model.Table.TableCellData",
+            "innerHTML": "366728",
+            "isHeader": false,
+            "type": "TEXT",
+            "Coordinates": {
+                "row": 2,
+                "column": 3
+            },
+            "cleanedText": "366728"
+        }
+    ],
+    "beginIndex": "0",
+    "endIndex": "0",
+    "referenceContext": "TEST",
+    "type": "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#OffsetBasedString",
+    "classe": "wikitable",
+    "maxDimensions": {
+        "row": 3,
+        "column": 4
+    },
+    "headersCleaned": [
+        "agg."
+    ],
+    "keyColumn": 0
+}

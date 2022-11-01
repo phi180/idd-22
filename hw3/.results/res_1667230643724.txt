@@ -1,0 +1,7 @@
+Timestamp: 1667230643724
+Query tokens:  | - | dave greene  | - | gerald john william boord  | - | mark gordon lambden  | - | john grana  | - | majority  | - | turnout  | - | liberal democrat hold 
+5a7094d1c868a712fd738025:0
+5a70b236c868a712fd7678fd:3
+5a70ba7ac868a712fd771604:2
+5a70ac3fc868a712fd75e667:6
+Elapsed time: 12ms

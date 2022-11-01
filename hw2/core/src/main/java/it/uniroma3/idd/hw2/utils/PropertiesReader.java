@@ -21,7 +21,7 @@ public class PropertiesReader {
     private static final String PROPERTIES_FILE = "lucene.properties";
     private static final String SPLIT = ",";
 
-    private static final String getPropertiesFullPath(String filename) {
+    private static String getPropertiesFullPath(String filename) {
         URL resource = PropertiesReader.class.getClassLoader().getResource(filename);
         File file = null;
         try {
