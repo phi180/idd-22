@@ -6,6 +6,7 @@ import it.uniroma3.idd.domain.result.ResultColumn;
 import it.uniroma3.idd.utils.Utils;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -71,6 +72,19 @@ class QueryLogicTest {
         assertEquals(2, results.size());
         assertEquals("presidenti4834r439",results.get(0).getTableId());
         assertEquals("ubuntu3489u934",results.get(1).getTableId());
+    }
+
+    @Test
+    void testQueryEmpty() {
+        buildIndex();
+        final String EMPTY_TOKEN = "";
+
+        QueryLogic queryLogic = new QueryLogic();
+        List<String[]> tokens = new ArrayList<>();
+        tokens.add(new String[] {EMPTY_TOKEN});
+
+        List<ResultColumn> results = queryLogic.query(tokens, K2);
+        assertEquals(0, results.size());
     }
 
     /* PRIVATE METHODS */
