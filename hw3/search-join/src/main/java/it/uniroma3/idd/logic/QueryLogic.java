@@ -117,8 +117,7 @@ public class QueryLogic {
             ResultColumn result = new ResultColumn(doc.get(TABLE_ID),
                     Long.valueOf(doc.get(COLUMN_NUM)));
 
-            results2occurrences.putIfAbsent(result,0);
-            results2occurrences.put(result,results2occurrences.get(result)+1);
+            results2occurrences.put(result,1);
         }
 
         return results2occurrences;
