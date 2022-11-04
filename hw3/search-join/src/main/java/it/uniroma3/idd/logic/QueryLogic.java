@@ -5,6 +5,7 @@ import it.uniroma3.idd.domain.lucene.LuceneTableCell;
 import it.uniroma3.idd.domain.lucene.LuceneTableColumn;
 import it.uniroma3.idd.domain.result.ResultColumn;
 import it.uniroma3.idd.utils.PropertiesReader;
+import it.uniroma3.idd.utils.StatsWriter;
 import org.apache.lucene.document.Document;
 import org.apache.lucene.index.DirectoryReader;
 import org.apache.lucene.index.IndexReader;
@@ -24,7 +25,7 @@ import static it.uniroma3.idd.utils.Constants.*;
 public class QueryLogic {
 
     private static final Logger logger = Logger.getLogger(QueryLogic.class.toString());
-
+    private static final Boolean EXPLAIN = PropertiesReader.readExplain();
     private static final int N_QUERY_RESULTS = 50;
 
     public List<ResultColumn> query(List<String[]> groupOfTokens, int k) {
@@ -107,6 +108,10 @@ public class QueryLogic {
     private Map<ResultColumn,Integer> runQuery(IndexSearcher searcher, Query query) throws IOException {
         logger.info("QueryLogic - runQuery(): numDocs="+searcher.getIndexReader().numDocs());
 
+        Long beginTimestamp = new Date().getTime();
+        if (EXPLAIN)
+            StatsWriter.initStatsFile(query.toString(CELL_CONTENT),beginTimestamp);
+
         Map<ResultColumn,Integer> results2occurrences = new HashMap<>();
 
         TopDocs hits = searcher.search(query, N_QUERY_RESULTS);
@@ -118,6 +123,15 @@ public class QueryLogic {
                     Long.valueOf(doc.get(COLUMN_NUM)));
 
             results2occurrences.put(result,1);
+
+            if (EXPLAIN) {
+                Explanation explanation = searcher.explain(query, scoreDoc.doc);
+                StatsWriter.writeStats(beginTimestamp, result.toString(), explanation);
+            }
+        }
+
+        if (EXPLAIN) {
+            StatsWriter.appendElapsedTimeAndHits(beginTimestamp, new Date().getTime(),hits.totalHits.value);
         }
 
         return results2occurrences;

@@ -14,4 +14,6 @@ public class Constants {
 
     public static final Integer N_TABLES = 1000;
 
+    public static final String INDEX_STATS = "./target/index_stats";
+
 }
