@@ -36,7 +36,23 @@ class QueryLogicTest {
 
         List<ResultColumn> results = queryLogic.query(tokens, K2);
         assertEquals(3, results.size());
-        assertEquals("presidenti4834r439", results.get(0).getTableId());
+        assertEquals("citta4895843uu394", results.get(0).getTableId());
+    }
+
+    @Test
+    void testQueryRegioni() {
+        buildIndex();
+
+        QueryLogic queryLogic = new QueryLogic();
+        List<String[]> tokens = List.of(
+                new String[] {"lazio"},
+                new String[] {"lombardia"},
+                new String[] {"toscana"});
+
+        List<ResultColumn> results = queryLogic.query(tokens, K2);
+        assertEquals(2, results.size());
+        assertEquals("citta4895843uu394", results.get(0).getTableId());
+        assertEquals("citta4839023uu004", results.get(1).getTableId());
     }
 
     @Test
@@ -49,7 +65,7 @@ class QueryLogicTest {
                 new String[] {"2016"},
                 new String[] {"2020"},
                 new String[] {"2011"});
-        List<ResultColumn> results = queryLogic.query(tokens, K1);
+        List<ResultColumn> results = queryLogic.query(tokens, K2);
         assertEquals(2, results.size());
         assertEquals("ubuntu3489u934",results.get(0).getTableId());
         assertEquals("presidenti4834r439",results.get(1).getTableId());
