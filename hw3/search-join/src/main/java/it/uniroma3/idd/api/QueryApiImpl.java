@@ -8,7 +8,6 @@ import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.ResultVO;
 import it.uniroma3.idd.entity.TableVO;
 import it.uniroma3.idd.logic.QueryLogic;
-import it.uniroma3.idd.utils.PropertiesReader;
 
 import java.util.ArrayList;
 import java.util.List;

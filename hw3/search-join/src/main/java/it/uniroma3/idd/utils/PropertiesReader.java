@@ -57,20 +57,6 @@ public class PropertiesReader {
         return precision;
     }
 
-    public static Boolean readExplain() {
-        Boolean explain = false;
-        try (InputStream input = new FileInputStream(getPropertiesFullPath(PROPERTIES_FILE))) {
-            Properties prop = new Properties();
-            prop.load(input);
-            explain = Boolean.parseBoolean(prop.getProperty("explain"));
-            logger.info("readExplain() - explain="+explain);
-        } catch (IOException ex) {
-            ex.printStackTrace();
-        }
-
-        return explain;
-    }
-
     public static boolean getDebugEnabled() {
         boolean debugEnabled = false;
         try (InputStream input = new FileInputStream(getPropertiesFullPath(PROPERTIES_FILE))) {
