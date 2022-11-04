@@ -40,6 +40,22 @@ class QueryLogicTest {
     }
 
     @Test
+    void testQueryRegioni() {
+        buildIndex();
+
+        QueryLogic queryLogic = new QueryLogic();
+        List<String[]> tokens = List.of(
+                new String[] {"lazio"},
+                new String[] {"lombardia"},
+                new String[] {"toscana"});
+
+        List<ResultColumn> results = queryLogic.query(tokens, K2);
+        assertEquals(2, results.size());
+        assertEquals("citta4895843uu394", results.get(0).getTableId());
+        assertEquals("citta4839023uu004", results.get(1).getTableId());
+    }
+
+    @Test
     void testQueryAnni() {
         buildIndex();
 
