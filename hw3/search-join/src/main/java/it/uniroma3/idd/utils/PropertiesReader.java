@@ -1,5 +1,7 @@
 package it.uniroma3.idd.utils;
 
+import it.uniroma3.idd.domain.enums.Granularity;
+
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -29,12 +31,12 @@ public class PropertiesReader {
         return indexPath;
     }
 
-    public static String getGranularity() {
-        String granularity = null;
+    public static Granularity getGranularity() {
+        Granularity granularity = null;
         try (InputStream input = new FileInputStream(getPropertiesFullPath(PROPERTIES_FILE))) {
             Properties prop = new Properties();
             prop.load(input);
-            granularity = prop.getProperty("result.granularity");
+            granularity = Granularity.fromString(prop.getProperty("index.granularity"));
             logger.info("getGranularity() - granularity="+granularity);
         } catch (IOException ex) {
             ex.printStackTrace();

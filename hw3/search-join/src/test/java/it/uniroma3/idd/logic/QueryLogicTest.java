@@ -65,8 +65,9 @@ class QueryLogicTest {
 
         List<ResultColumn> results = queryLogic.query(tokens, K2);
         assertEquals(2, results.size());
-        assertEquals("citta4839023uu004", results.get(0).getTableId());
-        assertEquals("citta4895843uu394", results.get(1).getTableId());
+        // ranking not managed
+        assertEquals("citta4895843uu394", results.get(0).getTableId());
+        assertEquals("citta4839023uu004", results.get(1).getTableId());
     }
 
     @Test

@@ -42,7 +42,7 @@ public class QueryLogic {
 
                     BooleanQuery.Builder booleanQueryBuilder = new BooleanQuery.Builder();
                     for(String token : cellTokens) {
-                        Query termQuery = new TermQuery(new Term(CELL_CONTENT, token));
+                        Query termQuery = new TermQuery(new Term(CONTENT, token));
                         booleanQueryBuilder.add(new BooleanClause(termQuery, BooleanClause.Occur.SHOULD));
                     }
 
@@ -110,7 +110,7 @@ public class QueryLogic {
 
         Long beginTimestamp = new Date().getTime();
         if (EXPLAIN)
-            StatsWriter.initStatsFile(query.toString(CELL_CONTENT),beginTimestamp);
+            StatsWriter.initStatsFile(query.toString(CONTENT),beginTimestamp);
 
         Map<ResultColumn,Integer> results2occurrences = new HashMap<>();
 
