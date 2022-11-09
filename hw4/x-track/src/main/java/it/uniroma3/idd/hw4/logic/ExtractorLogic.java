@@ -6,7 +6,10 @@ import it.uniroma3.idd.hw4.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +18,7 @@ import java.util.logging.Logger;
 public class ExtractorLogic {
 
     private static final Logger logger = Logger.getLogger(ExtractorLogic.class.toString());
+    private static final int MAX_WAIT_DURATION = 10;
 
     public ExtractorLogic() {
         System.setProperty("webdriver.gecko.driver", Utils.getPropertiesFullPath(Utils.getDriversLocation()));
@@ -55,7 +59,8 @@ public class ExtractorLogic {
 
             extractedLabeledData.getLabel2xpathData().putIfAbsent(label,new HashMap<>());
             for(String xpath: label2xpathEntry.getValue()) {
-                String result = driver.findElement(By.xpath(xpath)).getText();
+                String result = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_DURATION))
+                        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).getText();
                 extractedLabeledData.getLabel2xpathData().get(label).put(xpath, result);
             }
         }
