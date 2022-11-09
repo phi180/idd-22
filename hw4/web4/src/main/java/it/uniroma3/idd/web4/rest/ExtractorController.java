@@ -3,6 +3,7 @@ package it.uniroma3.idd.web4.rest;
 import it.uniroma3.idd.web4.domain.model.Rule;
 import it.uniroma3.idd.web4.domain.service.ExtractorService;
 import it.uniroma3.idd.web4.domain.service.RuleService;
+import it.uniroma3.idd.web4.dto.ExtractedLabeledDataDTO;
 import it.uniroma3.idd.web4.dto.in.ExtractInputDTO;
 import it.uniroma3.idd.web4.dto.out.RuleItemOutDTO;
 import it.uniroma3.idd.web4.dto.out.RuleOutDTO;
@@ -32,6 +33,7 @@ public class ExtractorController {
     public String home(Model model) {
         logger.info("ExtractorController - home()");
         List<RuleItemOutDTO> allRules = this.ruleService.getAllRulesItems();
+        model.addAttribute("searchForm", new ExtractInputDTO());
         model.addAttribute("rules", allRules);
 
         return "home";
@@ -41,7 +43,9 @@ public class ExtractorController {
     public String extractData(Model model,@ModelAttribute("extractForm") ExtractInputDTO extractInputDTO) {
         logger.info("ExtractorController - extractData(): extractInputDTO={}",extractInputDTO);
         RuleOutDTO rule = this.ruleService.getRuleById(extractInputDTO.getRuleId());
-        this.extractorService.getDataFromXpath(extractInputDTO.getUrl(), rule.getLabel2xpathExpressions());
+        ExtractedLabeledDataDTO extractedLabeledDataDTO = this.extractorService.getDataFromXpath(extractInputDTO.getUrl(), rule.getLabel2xpathExpressions());
+
+        model.addAttribute("data", extractedLabeledDataDTO);
 
         return "result";
     }

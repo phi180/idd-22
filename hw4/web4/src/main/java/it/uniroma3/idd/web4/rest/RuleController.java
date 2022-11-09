@@ -2,6 +2,7 @@ package it.uniroma3.idd.web4.rest;
 
 import it.uniroma3.idd.web4.domain.service.RuleService;
 import it.uniroma3.idd.web4.dto.in.AddRuleXPathDTO;
+import it.uniroma3.idd.web4.dto.in.EditRuleInDTO;
 import it.uniroma3.idd.web4.dto.in.RuleInDTO;
 import it.uniroma3.idd.web4.dto.out.RuleOutDTO;
 import org.apache.logging.log4j.LogManager;
@@ -9,11 +10,9 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 @Controller
@@ -45,9 +44,9 @@ public class RuleController {
     @RequestMapping(value = "/new", method = RequestMethod.POST)
     public String addRule(Model model, @ModelAttribute("ruleForm") RuleInDTO ruleInDTO) {
         logger.info("RuleController - addRule(): ruleInDTO={}",ruleInDTO);
-        this.ruleService.addRule(ruleInDTO);
+        RuleOutDTO ruleOutDTO = this.ruleService.addRule(ruleInDTO);
 
-        return "redirect:/new";
+        return "redirect:/rule/"+ruleOutDTO.getId();
     }
 
     @RequestMapping(value = "/{ruleId}", method = RequestMethod.GET)
@@ -55,28 +54,42 @@ public class RuleController {
         logger.info("RuleController - showRuleDetails()");
         RuleOutDTO ruleOutDTO = this.ruleService.getRuleById(ruleId);
         model.addAttribute("rule", ruleOutDTO);
+        model.addAttribute("xpathRuleForm", new AddRuleXPathDTO());
 
         return "rule";
     }
 
-    @RequestMapping(value = "/{ruleId}/add", method = RequestMethod.POST)
+    @RequestMapping(value = "/{ruleId}/edit", method = RequestMethod.GET)
+    public String showEditRule(Model model, @PathVariable("ruleId") Long ruleId) {
+        logger.info("RuleController - editRule()");
+        RuleOutDTO ruleOutDTO = this.ruleService.getRuleById(ruleId);
+        model.addAttribute("rule", ruleOutDTO);
+
+        return "editRule";
+    }
+
+    @RequestMapping(value = "/{ruleId}/edit", method = RequestMethod.POST)
+    public String editRule(Model model,@PathParam("ruleId") Long ruleId, @RequestBody EditRuleInDTO editRuleInDTO) {
+        logger.info("RuleController - editRule(): editRuleInDTO={}",editRuleInDTO);
+
+        return "editRule";
+    }
+
+    @RequestMapping(value = "/{ruleId}/xpath/add", method = RequestMethod.POST)
     public String addXpathToRule(Model model, @PathVariable("ruleId") Long ruleId, @ModelAttribute("addRuleXPathForm") AddRuleXPathDTO addRuleXPathDTO) {
         logger.info("RuleController - addXpathToRule()");
         this.ruleService.addXpathInRule(ruleId,addRuleXPathDTO);
 
-        return "redirect:/" + ruleId  + "/add";
+        return "redirect:/rule/" + ruleId;
     }
 
-    public String editRule(Model model) {
+    @RequestMapping(value = "/{ruleId}/label/{label}/remove", method = RequestMethod.GET)
+    public String deleteLabelInRule(Model model, @PathVariable("ruleId") Long ruleId, @PathVariable("label") String label) {
+        logger.info("RuleController - deleteLabelInRule(): ruleId={}, label={}",ruleId,label);
+        this.ruleService.deleteLabelInRule(ruleId,label);
 
-        return null;
+        return "redirect:/rule/" + ruleId;
     }
-
-    public String editXpathInRule(Model model) {
-
-        return null;
-    }
-
 
 
 }

@@ -13,7 +13,7 @@ spring:
     show-sql: true
     properties:
       hibernate:
-        ddl-auto: create
+        ddl-auto: drop-create
         jdbc:
           lob:
             non_contextual_creation: true

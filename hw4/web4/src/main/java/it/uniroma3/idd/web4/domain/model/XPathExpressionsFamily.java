@@ -3,6 +3,7 @@ package it.uniroma3.idd.web4.domain.model;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class XPathExpressionsFamily {
     @ElementCollection
     @CollectionTable
     @Column
-    private List<String> expressions;
+    private List<String> expressions = new ArrayList<>();
 
     public boolean addExpression(String expression) {
         return this.expressions.add(expression);

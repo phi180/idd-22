@@ -39,18 +39,15 @@
                             <!-- To make this form functional, sign up at-->
                             <!-- https://startbootstrap.com/solution/contact-forms-->
                             <!-- to get an API token!-->
-                            <form class="form-subscribe" id="contactForm">
+                            <form class="form-subscribe" th:object="${searchForm}" th:action="@{'/'}" method="post">
                                 <!-- Email address input-->
                                 <div class="row">
                                     <div class="col">
-                                        <input class="form-control form-control-lg" id="emailAddress" type="url" placeholder="Enter URL" />
+                                        <input th:field="*{url}" class="form-control form-control-lg" id="url" type="url" placeholder="Enter URL" />
                                     </div>
                                     <div class="col-3">
-                                        <select class="form-select" aria-label="Select Rule">
-                                            <option selected>Amazon</option>
-                                            <option value="1">IMDB</option>
-                                            <option value="2">Two</option>
-                                            <option value="3">Three</option>
+                                        <select th:field="*{ruleId}" class="form-select" aria-label="Select Rule">
+                                            <option th:each="rule: ${rules}" th:text="${rule.name}" th:value="${rule.id}">Rule</option>
                                         </select>
                                     </div>
                                     <div class="col-auto"><button class="btn btn-primary btn-lg" id="submitButton" type="submit">Get Data</button></div>
@@ -67,29 +64,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-6 h-100 text-center text-lg-start my-auto">
-                        <ul class="list-inline mb-2">
-                            <li class="list-inline-item"><a href="#!">About</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Contact</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Terms of Use</a></li>
-                            <li class="list-inline-item">⋅</li>
-                            <li class="list-inline-item"><a href="#!">Privacy Policy</a></li>
-                        </ul>
                         <p class="text-muted small mb-4 mb-lg-0">&copy; Your Website 2022. All Rights Reserved.</p>
-                    </div>
-                    <div class="col-lg-6 h-100 text-center text-lg-end my-auto">
-                        <ul class="list-inline mb-0">
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-facebook fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item me-4">
-                                <a href="#!"><i class="bi-twitter fs-3"></i></a>
-                            </li>
-                            <li class="list-inline-item">
-                                <a href="#!"><i class="bi-instagram fs-3"></i></a>
-                            </li>
-                        </ul>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import it.uniroma3.idd.web4.domain.model.Rule;
 import it.uniroma3.idd.web4.domain.model.XPathExpressionsFamily;
 import it.uniroma3.idd.web4.domain.repository.RuleRepository;
 import it.uniroma3.idd.web4.dto.in.AddRuleXPathDTO;
+import it.uniroma3.idd.web4.dto.in.EditRuleInDTO;
 import it.uniroma3.idd.web4.dto.in.RuleInDTO;
 import it.uniroma3.idd.web4.dto.out.RuleItemOutDTO;
 import it.uniroma3.idd.web4.dto.out.RuleOutDTO;
@@ -30,7 +31,7 @@ public class RuleService {
         logger.info("RuleService - addRule(): ruleInDTO={}",ruleInDTO);
         Rule rule = new Rule();
         rule.setName(ruleInDTO.getName());
-        rule.setDescription(rule.getDescription());
+        rule.setDescription(ruleInDTO.getDescription());
         rule = this.ruleRepository.save(rule);
 
         return toRuleOutDTO(rule);
@@ -68,11 +69,37 @@ public class RuleService {
         return rules;
     }
 
+    public void deleteLabelInRule(Long ruleId, String label) {
+        logger.info("RuleService - deleteLabelInRule()");
+
+        Rule rule = this.ruleRepository.findById(ruleId).get();
+        rule.getLabel2xpathExpressions().remove(label);
+        this.ruleRepository.save(rule);
+    }
+
+    @Transactional
+    public RuleOutDTO editRule(Long ruleId, EditRuleInDTO editRuleInDTO) {
+        logger.info("RuleService - editRule()");
+        Rule rule = new Rule();
+        rule.setId(ruleId);
+        rule.setName(editRuleInDTO.getName());
+        rule.setDescription(editRuleInDTO.getDescription());
+        for(Map.Entry<String,List<String>> entry: editRuleInDTO.getLabel2xpathExpressions().entrySet()) {
+            String label = entry.getKey();
+            List<String> xpaths = entry.getValue();
+            //TODO
+        }
+
+        rule = this.ruleRepository.save(rule);
+        return toRuleOutDTO(rule);
+    }
+
     /** private methods */
 
     private RuleOutDTO toRuleOutDTO(Rule rule) {
         RuleOutDTO ruleOutDTO = new RuleOutDTO();
         ruleOutDTO.setId(rule.getId());
+        ruleOutDTO.setName(rule.getName());
         ruleOutDTO.setDescription(rule.getDescription());
         for(Map.Entry<String,XPathExpressionsFamily> entry : rule.getLabel2xpathExpressions().entrySet()) {
             String label = entry.getKey();
@@ -87,7 +114,7 @@ public class RuleService {
     private RuleItemOutDTO toRuleItemOutDTO(Rule rule) {
         RuleItemOutDTO ruleItemOutDTO = new RuleItemOutDTO();
         ruleItemOutDTO.setId(rule.getId());
-        ruleItemOutDTO.setName((ruleItemOutDTO.getName()));
+        ruleItemOutDTO.setName((rule.getName()));
         ruleItemOutDTO.setDescription(rule.getDescription());
 
         return ruleItemOutDTO;
