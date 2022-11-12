@@ -1,0 +1,38 @@
+# application.yml
+---
+spring:
+  application:
+    name: web4
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5432/xtrackdb
+    password: root
+    driverClassName: org.postgresql.Driver
+  jpa:
+    database: POSTGRESQL
+    show-sql: true
+    properties:
+      hibernate:
+        ddl-auto: drop-create
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    generate-ddl: true
+  thymeleaf:
+    encoding: UTF-8
+    enabled: 'true'
+    prefix: classpath:/templates/
+    cache: 'false'
+    check-template-location: 'true'
+    suffix: .html
+    servlet:
+      content-type: text/html
+
+
+server:
+  #port: ${PORT:${SERVER_PORT:0}}
+  port: 8080
+  servlet:
+    context-path: /
+
+

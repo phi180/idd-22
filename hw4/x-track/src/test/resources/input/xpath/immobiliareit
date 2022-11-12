@@ -1,0 +1,8 @@
+Nome#//div[@class="im-titleBlock"]/h1[@class="im-titleBlock__content"]/span[@class="im-titleBlock__title"]
+Città#//div[@class="im-titleBlock"]/h1[@class="im-titleBlock__content"]/a/span[1]
+Zona#//div[@class="im-titleBlock"]/h1[@class="im-titleBlock__content"]/a/span[2]
+Costo#//div[@class="im-mainFeatures"]/ul/li[@class="nd-list__item im-mainFeatures__price"]/div[@class="im-mainFeatures__title"]
+Locali#//div[@class="im-mainFeatures"]/ul/li[@class="nd-list__item"]/span[@class="im-mainFeatures__label" and text()="locali"]/preceding-sibling::span[@class="im-mainFeatures__value"]
+Superficie#//div[@class="im-mainFeatures"]/ul/li[@class="nd-list__item"]/span[@class="im-mainFeatures__label" and text()="superficie"]/preceding-sibling::span[@class="im-mainFeatures__value"]
+Spese condominio#//dt[@class="im-features__title" and text()="spese condominio"]/following-sibling::dd[1]
+Anno costruzione#//dt[@class="im-features__title" and text()="anno di costruzione"]/following-sibling::dd[1]

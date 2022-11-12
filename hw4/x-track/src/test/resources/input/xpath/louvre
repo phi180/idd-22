@@ -1,0 +1,7 @@
+Titolo#//h1[@class="notice__title h_1"]
+Autore#//div[@class="notice__titles"]/div[@class="notice__author"]/a[1]
+Nazione#//div[@class="notice__titles"]/div[@class="notice__author"]/a[2]
+Data#//div[@class="notice__titles"]/div[@class="notice__date"][1]/span
+Identificativo#//div[@class="notice__titles"]/div[@class="notice__date"][2]/span
+Collezione#//div[@class="notice__titles"]/div[@class="notice__date"][3]/span
+Data di acquisizione#//div[@class="m-10col is-centered notice__fullcartel__inner"]/div[@class="notice__fullcartel__part"]/h2[text()="History"]/following-sibling::div/div/div[text()="Acquisition date"]/following-sibling::div[1]

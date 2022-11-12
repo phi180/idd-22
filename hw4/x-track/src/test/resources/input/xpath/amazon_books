@@ -1,0 +1,7 @@
+Titolo#//h1[@id="title"]/span[@id="productTitle"]
+Autore#//div[@id="bylineInfo"]/span[contains(@class,"author")][1]/span/a[1]|//div[@id="bylineInfo"]/span[contains(@class,"author")][1]/a[1]
+Pagine#//div[@id="detailBullets_feature_div"]/ul/li/span/span[contains(text(),"Copertina")]/following-sibling::span
+Prezzo copertina flessibile#//div[@id="formats"]/div[@id="tmmSwatches"]/ul/li/span/span/span/a/span[text()="Copertina flessibile"]/following-sibling::span/span
+Venditore#//div[@id="tabular_feature_div"]/div[@id="tabular-buybox"]/div[1]/div[4]/div/span
+Valutazione#//div[@id="reviewsMedley"]/div[1]/div[1]/div[contains(@class,"a-section")]/div/div/div[contains(@class,"a-col-right")]/div[1]/span/span
+Editore#//div[@id="detailBullets_feature_div"]/ul/li/span/span[contains(text(),"Editore")]/following-sibling::span
