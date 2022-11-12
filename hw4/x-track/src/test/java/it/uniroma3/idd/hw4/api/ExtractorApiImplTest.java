@@ -18,7 +18,7 @@ class ExtractorApiImplTest {
 
     private static final String URLS_DIRECTORY = Utils.getResourceFullPath("./input/url/");
     private static final String XPATHS_DIRECTORY = Utils.getResourceFullPath("./input/xpath/");
-    private static final String SEPARATOR = ":";
+    private static final String SEPARATOR = "#";
     private static final String SLASH = "/";
     private static final String TXT_EXTENSION = ".txt";
 
