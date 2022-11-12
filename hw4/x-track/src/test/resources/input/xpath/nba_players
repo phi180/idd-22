@@ -1,0 +1,9 @@
+Nome#//div[@class="PlayerSummary_mainInnerBio__JQkoj"]/p[2]
+Cognome#//div[@class="PlayerSummary_mainInnerBio__JQkoj"]/p[3]
+Squadra#//div[@class="PlayerSummary_mainInnerBio__JQkoj"]/p[1]
+Esperienza#//p[text()="EXPERIENCE"]/following-sibling::p
+Nazione#//p[text()="COUNTRY"]/following-sibling::p
+PPG#//p[text()="PPG"]/following-sibling::p
+RPG#//p[text()="RPG"]/following-sibling::p
+APG#//p[text()="APG"]/following-sibling::p
+PIE#//p[text()="PIE"]/following-sibling::p

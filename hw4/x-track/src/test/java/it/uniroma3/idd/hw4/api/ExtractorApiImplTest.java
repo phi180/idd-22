@@ -28,6 +28,36 @@ class ExtractorApiImplTest {
         exec(datasetName);
     }
 
+    @Test
+    void getLabeledDataFromXpathImdb() {
+        String datasetName = "imdb_film";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathNba() {
+        String datasetName = "nba_players";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathCarrefour() {
+        String datasetName = "carrefour";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathOxford() {
+        String datasetName = "oxford";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathImmobiliare() {
+        String datasetName = "immobiliareit";
+        exec(datasetName);
+    }
+
     /** private methods */
 
     private void exec(String datasetName) {
