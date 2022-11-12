@@ -58,6 +58,12 @@ class ExtractorApiImplTest {
         exec(datasetName);
     }
 
+    @Test
+    void getLabeledDataFromXpathLouvre() {
+        String datasetName = "louvre";
+        exec(datasetName);
+    }
+
     /** private methods */
 
     private void exec(String datasetName) {
