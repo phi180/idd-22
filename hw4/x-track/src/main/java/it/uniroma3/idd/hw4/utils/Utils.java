@@ -17,7 +17,7 @@ public class Utils {
         return "err";
     }
 
-    public static String getPropertiesFullPath(String filename) {
+    public static String getResourceFullPath(String filename) {
         URL resource = Utils.class.getClassLoader().getResource(filename);
         File file = null;
         try {

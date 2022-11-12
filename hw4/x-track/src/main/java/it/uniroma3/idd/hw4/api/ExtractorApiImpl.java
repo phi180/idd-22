@@ -3,6 +3,7 @@ package it.uniroma3.idd.hw4.api;
 import it.uniroma3.idd.hw4.domain.ExtractedData;
 import it.uniroma3.idd.hw4.domain.ExtractedLabeledData;
 import it.uniroma3.idd.hw4.logic.ExtractorLogic;
+import it.uniroma3.idd.hw4.utils.csv.CSVUtils;
 import it.uniroma3.idd.hw4.vo.ExtractedDataVO;
 import it.uniroma3.idd.hw4.vo.ExtractedLabeledDataVO;
 import org.springframework.stereotype.Component;
@@ -26,7 +27,10 @@ public class ExtractorApiImpl implements ExtractorApi {
         ExtractorLogic extractorLogic = new ExtractorLogic();
         ExtractedLabeledData extractedData = extractorLogic.extractLabeledData(url, label2xpaths);
 
-        return toExtractedLabeledDataVO(extractedData);
+        ExtractedLabeledDataVO extractedLabeledDataVO = toExtractedLabeledDataVO(extractedData);
+        CSVUtils.appendToDataset(extractedLabeledDataVO);
+
+        return extractedLabeledDataVO;
     }
 
     /** PRIVATE METHODS */

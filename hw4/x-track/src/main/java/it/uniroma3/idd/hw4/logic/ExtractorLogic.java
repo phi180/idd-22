@@ -18,10 +18,10 @@ import java.util.logging.Logger;
 public class ExtractorLogic {
 
     private static final Logger logger = Logger.getLogger(ExtractorLogic.class.toString());
-    private static final int MAX_WAIT_DURATION = 10;
+    private static final int MAX_WAIT_DURATION = 5;
 
     public ExtractorLogic() {
-        System.setProperty("webdriver.gecko.driver", Utils.getPropertiesFullPath(Utils.getDriversLocation()));
+        System.setProperty("webdriver.gecko.driver", Utils.getResourceFullPath(Utils.getDriversLocation()));
     }
 
     public ExtractedData extractData(String url, List<String> xpaths) {
@@ -31,6 +31,7 @@ public class ExtractorLogic {
         extractedData.setUrl(url);
 
         WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
         driver.get(url);
 
         for(String xpathExpression : xpaths) {
@@ -52,6 +53,7 @@ public class ExtractorLogic {
         extractedLabeledData.setUrl(url);
 
         WebDriver driver = new FirefoxDriver();
+        driver.manage().window().maximize();
         driver.get(url);
 
         for(Map.Entry<String,List<String>> label2xpathEntry : label2xpath.entrySet()) {
@@ -59,9 +61,14 @@ public class ExtractorLogic {
 
             extractedLabeledData.getLabel2xpathData().putIfAbsent(label,new HashMap<>());
             for(String xpath: label2xpathEntry.getValue()) {
-                String result = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_DURATION))
-                        .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).getText();
-                extractedLabeledData.getLabel2xpathData().get(label).put(xpath, result);
+                try {
+                    String result = new WebDriverWait(driver, Duration.ofSeconds(MAX_WAIT_DURATION))
+                            .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).getText();
+                    extractedLabeledData.getLabel2xpathData().get(label).put(xpath, result);
+                } catch(Exception e) {
+                    logger.info("Error while extracting " + xpath);
+                    logger.info(e.getMessage());
+                }
             }
         }
 
