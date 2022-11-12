@@ -1,0 +1,5 @@
+Marca#//div[@class="product-main"]/div[@class="product-main-info"]/div[1]/div/p[@class="product-name"]
+Prodotto#//div[@class="product-main"]/div[@class="product-main-info"]/div[1]/div/h1[@class="product-description"]
+Prezzo#//div[@class="product-main"]/div[@class="product-main-info"]/div[2]/div[@class="prices"]/div[@class="price"]/span/span/span[@class="value "]
+Rating#//div[@id="netreviews_rating_section"]/div[@class="netreviews_rating_content"]/div[@class="netreviews_global_rating"]/p[1]
+Categoria#//div[@class="product-detail-page  "]/div[@class="product-breadcrumb"]/nav[@aria-label="Breadcrumb"]/ol/li[2]/a/span[1]

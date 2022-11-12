@@ -1,0 +1,7 @@
+Titolo#//h1[@id="course-title"]
+Codice#//div[@id="summary-panel"]/div/dl[@class="dl-horizontal"][1]/dt[text()="Code"]/following-sibling::dd[1]
+Commissioni#//div[@id="summary-panel"]/div/dl[@class="dl-horizontal"][1]/dt[text()="Fees"]/following-sibling::dd[1]
+Crediti#//div[@id="summary-panel"]/div/dl[@class="dl-horizontal"][1]/dt[text()="Credit"]/following-sibling::dd[1]
+Date#//div[@id="summary-panel"]/div/dl[@class="dl-horizontal"][2]/dt[text()="Dates"]/following-sibling::dd[1]
+Locazione#//div[@id="summary-panel"]/div/dl/dt[text()="Location"]/following-sibling::dd[1]
+Orario#//div[@id="summary-panel"]/div/dl[@class="dl-horizontal"][2]/dt[text()="Time"]/following-sibling::dd[1]
