@@ -8,7 +8,7 @@ public class Constants {
 
     public static final String ROW_NUM = "rowNum";
 
-    public static final String CELL_CONTENT = "cellContent";
+    public static final String CONTENT = "content";
 
     public static final String IS_HEADER = "isHeader";
 

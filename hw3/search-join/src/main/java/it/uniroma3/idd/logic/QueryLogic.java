@@ -41,7 +41,7 @@ public class QueryLogic {
 
                     BooleanQuery.Builder booleanQueryBuilder = new BooleanQuery.Builder();
                     for(String token : cellTokens) {
-                        Query termQuery = new TermQuery(new Term(CELL_CONTENT, token));
+                        Query termQuery = new TermQuery(new Term(CONTENT, token));
                         booleanQueryBuilder.add(new BooleanClause(termQuery, BooleanClause.Occur.SHOULD));
                     }
 

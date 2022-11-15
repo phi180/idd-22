@@ -56,6 +56,21 @@ class QueryLogicTest {
     }
 
     @Test
+    void testQueryRegioni2() {
+        buildIndex();
+
+        QueryLogic queryLogic = new QueryLogic();
+        List<String[]> tokens = new ArrayList<>();
+        tokens.add(new String[] {"lazio","lombardia","toscana"});
+
+        List<ResultColumn> results = queryLogic.query(tokens, K2);
+        assertEquals(2, results.size());
+        // ranking not managed
+        assertEquals("citta4895843uu394", results.get(0).getTableId());
+        assertEquals("citta4839023uu004", results.get(1).getTableId());
+    }
+
+    @Test
     void testQueryAnni() {
         buildIndex();
 

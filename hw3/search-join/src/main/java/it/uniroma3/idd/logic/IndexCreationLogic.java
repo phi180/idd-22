@@ -2,6 +2,8 @@ package it.uniroma3.idd.logic;
 
 import it.uniroma3.idd.api.ParseApi;
 import it.uniroma3.idd.api.StatsApi;
+import it.uniroma3.idd.domain.enums.Granularity;
+import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.StatisticsVO;
 import it.uniroma3.idd.entity.TableVO;
@@ -42,6 +44,8 @@ public class IndexCreationLogic {
 
     private static final String STOPWORDS_FILE = "stopwords.txt";
 
+    private static final Granularity INDEX_GRANULARITY = PropertiesReader.getGranularity();
+
     private ParseApi parseApi = new ParseApiImpl();
 
     public void createIndex(String datasetPath) throws IOException {
@@ -65,7 +69,7 @@ public class IndexCreationLogic {
                 .addTokenFilter(StopFilterFactory.class, "words", STOPWORDS_FILE);
 
         Map<String, Analyzer> perFieldAnalyzers = new HashMap<>();
-        perFieldAnalyzers.put(CELL_CONTENT, contentAnalyzerBuilder.build());
+        perFieldAnalyzers.put(CONTENT, contentAnalyzerBuilder.build());
 
         Analyzer analyzer = new PerFieldAnalyzerWrapper(new StandardAnalyzer(), perFieldAnalyzers);
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
@@ -86,24 +90,10 @@ public class IndexCreationLogic {
                 int distinctColumnTokens = Utils.countDistinctTokens(columnVOEntry.getValue(),precision);
                 if(chebychevCondition(distinctColumnTokens,precision,statisticsVO)) {
 
-                    String header = columnVOEntry.getValue().getHeader();
-                    if(header!=null) {
-                        Document headerDoc = generateDocument(tableVO.getOid(), columnVOEntry.getKey(), 0,
-                                header, true);
-                        writer.addDocument(headerDoc);
-                    }
-
-                    columnVOEntry.getValue().getCells().entrySet().parallelStream().forEach(
-                            cellVOEntry -> {
-                                Document doc = generateDocument(tableVO.getOid(), columnVOEntry.getKey(), cellVOEntry.getKey(),
-                                        cellVOEntry.getValue().getContent(), false);
-                                try {
-                                    writer.addDocument(doc);
-                                } catch (IOException e) {
-                                    throw new RuntimeException(e);
-                                }
-                            }
-                    );
+                    if(INDEX_GRANULARITY.equals(Granularity.CELL))
+                        insertCellsInIndex(writer, tableVO.getOid(), columnVOEntry.getKey(),columnVOEntry.getValue());
+                    else if(INDEX_GRANULARITY.equals(Granularity.COLUMN))
+                        insertColumnInIndex(writer, tableVO.getOid(), columnVOEntry.getKey(),columnVOEntry.getValue());
                 }
             }
 
@@ -131,13 +121,54 @@ public class IndexCreationLogic {
         return directory;
     }
 
+    private void insertColumnInIndex(IndexWriter writer, String tableOid, Integer colnum, ColumnVO columnVO) {
+        final String EMPTY_SPACE = " ";
+        StringBuilder content = new StringBuilder();
+
+        for(CellVO cellVO: columnVO.getCells().values()) {
+            content.append(cellVO.getContent()).append(EMPTY_SPACE);
+        }
+
+        Document doc = generateDocument(tableOid, colnum, 0,content.toString(), false);
+
+        try {
+            writer.addDocument(doc);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private void insertCellsInIndex(IndexWriter writer, String tableOid, Integer colnum, ColumnVO columnVO) throws IOException {
+        String header = columnVO.getHeader();
+        if(header!=null) {
+            Document headerDoc = generateDocument(tableOid, colnum, 0,
+                    header, true);
+            writer.addDocument(headerDoc);
+        }
+
+        columnVO.getCells().entrySet().parallelStream().forEach(
+                cellVOEntry -> {
+                    Document doc = generateDocument(tableOid, colnum, cellVOEntry.getKey(),
+                            cellVOEntry.getValue().getContent(), false);
+                    try {
+                        writer.addDocument(doc);
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                }
+        );
+    }
+
     private Document generateDocument(String tableOid, int columnNum, int rowNum, String cellContent, boolean isHeader) {
         Document doc = new Document();
         doc.add(new StringField(TABLE_ID, tableOid, Field.Store.YES));
         doc.add(new StringField(COLUMN_NUM, String.valueOf(columnNum), Field.Store.YES));
-        doc.add(new StringField(ROW_NUM, String.valueOf(rowNum), Field.Store.YES));
-        doc.add(new TextField(CELL_CONTENT, cellContent, Field.Store.NO));
-        doc.add(new StringField(IS_HEADER, String.valueOf(isHeader), Field.Store.NO));
+        doc.add(new TextField(CONTENT, cellContent, Field.Store.NO));
+
+        if(INDEX_GRANULARITY.equals(Granularity.CELL)) {
+            doc.add(new StringField(ROW_NUM, String.valueOf(rowNum), Field.Store.YES));
+            doc.add(new StringField(IS_HEADER, String.valueOf(isHeader), Field.Store.NO));
+        }
 
         return doc;
     }
