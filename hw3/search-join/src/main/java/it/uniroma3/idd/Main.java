@@ -1,10 +1,10 @@
 package it.uniroma3.idd;
 
-import it.uniroma3.idd.hw4.api.*;
+import it.uniroma3.idd.hw3.api.*;
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.ResultVO;
-import it.uniroma3.idd.hw4.logic.result.QueryResultsWriter;
+import it.uniroma3.idd.hw3.logic.result.QueryResultsWriter;
 
 import java.util.ArrayList;
 import java.util.Date;

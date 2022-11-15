@@ -1,11 +1,8 @@
 package it.uniroma3.idd.web4.domain.service;
 
-import it.uniroma3.idd.hw4.api.ExtractorApi;
-import it.uniroma3.idd.hw4.vo.ExtractedDataVO;
-import it.uniroma3.idd.hw4.vo.ExtractedLabeledDataVO;
-import it.uniroma3.idd.web4.dto.ExtractedDataDTO;
+import it.uniroma3.idd.hw3.api.ExtractorApi;
+import it.uniroma3.idd.hw3.vo.ExtractedLabeledDataVO;
 import it.uniroma3.idd.web4.dto.ExtractedLabeledDataDTO;
-import it.uniroma3.idd.web4.rest.ExtractorController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
