@@ -1,9 +1,10 @@
-package it.uniroma3.idd.hw3.api;
+package it.uniroma3.idd.hw4.api;
 
-import it.uniroma3.idd.hw3.domain.ExtractedData;
-import it.uniroma3.idd.hw3.domain.ExtractedLabeledData;
-import it.uniroma3.idd.hw3.logic.ExtractorLogic;
-import it.uniroma3.idd.hw3.utils.csv.CSVUtils;
+import it.uniroma3.idd.hw3.api.ExtractorApi;
+import it.uniroma3.idd.hw4.domain.ExtractedData;
+import it.uniroma3.idd.hw4.domain.ExtractedLabeledData;
+import it.uniroma3.idd.hw4.logic.ExtractorLogic;
+import it.uniroma3.idd.hw4.utils.csv.CSVUtils;
 import it.uniroma3.idd.hw3.vo.ExtractedDataVO;
 import it.uniroma3.idd.hw3.vo.ExtractedLabeledDataVO;
 import org.springframework.stereotype.Component;

@@ -1,25 +1,25 @@
-package it.uniroma3.idd.hw3.logic;
+package it.uniroma3.idd.hw4.logic;
 
-import it.uniroma3.idd.hw3.domain.ExtractedData;
-import it.uniroma3.idd.hw3.domain.ExtractedLabeledData;
-import it.uniroma3.idd.hw3.utils.Utils;
+import it.uniroma3.idd.hw4.domain.ExtractedData;
+import it.uniroma3.idd.hw4.domain.ExtractedLabeledData;
+import it.uniroma3.idd.hw4.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class ExtractorLogic {
 
-    private static final Logger logger = Logger.getLogger(ExtractorLogic.class.toString());
+    private static final Logger logger = LoggerFactory.getLogger(ExtractorLogic.class);
     private static final int MAX_WAIT_DURATION = 5;
 
     public ExtractorLogic() {
