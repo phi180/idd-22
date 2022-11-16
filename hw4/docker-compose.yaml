@@ -17,7 +17,7 @@ services:
     depends_on:
       - "consul"
   xtrack:
-    build: ./x-track
+    build: ./web4
     image: phi180/x-track
     environment:
       - SPRING_PROFILE=default
