@@ -1,0 +1,25 @@
+version: "3.8"
+services:
+  consul:
+    image: consul
+    ports:
+      - "8500:8500"
+  xtrackdb:
+    image: postgres
+    volumes:
+      - "$PWD/postgres:/docker-entrypoint-initdb.d"
+    ports:
+      - "5433:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: root
+      POSTGRES_DB: xtrackdb
+    depends_on:
+      - "consul"
+  xtrack:
+    build: ./x-track
+    image: phi180/x-track
+    environment:
+      - SPRING_PROFILE=default
+    depends_on:
+      - "consul"
