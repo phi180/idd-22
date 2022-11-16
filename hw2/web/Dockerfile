@@ -1,6 +1,6 @@
 FROM openjdk:17-jdk
 
-ADD web/target/web-0.0.1-SNAPSHOT.war lucenex.war
+ADD target/web-0.0.1-SNAPSHOT.war lucenex.war
 
 EXPOSE 8080
 
