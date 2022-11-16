@@ -2,6 +2,7 @@ package it.uniroma3.idd.hw3.api;
 
 import it.uniroma3.idd.entity.StatisticsVO;
 import it.uniroma3.idd.hw3.engine.Engine;
+import it.uniroma3.idd.hw3.engine.StatisticsCache;
 import it.uniroma3.idd.hw3.stats.Statistics;
 
 public class StatsApiImpl implements StatsApi {
@@ -9,12 +10,20 @@ public class StatsApiImpl implements StatsApi {
     @Override
     public StatisticsVO runStatistics(String datasetPath) {
         Engine engine = new Engine();
-        return getStatisticsVO(engine.run(datasetPath));
+        Statistics statistics = StatisticsCache.getInstance().getDataset2statistics().containsKey(datasetPath)?
+                StatisticsCache.getInstance().getDataset2statistics().get(datasetPath): engine.run(datasetPath);
+        StatisticsCache.getInstance().addStatistics(datasetPath,statistics);
+        return toStatisticsVO(statistics);
+    }
+
+    @Override
+    public void cleanCache() {
+        StatisticsCache.getInstance().cleanCache();
     }
 
     /* PRIVATE METHODS **/
 
-    private StatisticsVO getStatisticsVO(Statistics statistics) {
+    private StatisticsVO toStatisticsVO(Statistics statistics) {
         StatisticsVO statisticsVO = new StatisticsVO();
 
         statisticsVO.setNumberOfTables(statistics.getNumberOfTables());

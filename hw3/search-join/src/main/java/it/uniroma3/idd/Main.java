@@ -16,17 +16,23 @@ public class Main {
 
     public static void main(String[] args) {
         String datasetPath = args[0];
+        Integer nQueries = Integer.valueOf(args[1]);
+
         buildIndex(datasetPath);
 
-        RandomApi randomApi = new RandomApiImpl();
-        ColumnVO columnVO = randomApi.getRandomColumn(datasetPath);
 
-        QueryApi queryApi = new QueryApiImpl();
-        Long beginQueryTime = new Date().getTime();
-        List<ResultVO> resultVOList = queryApi.query(columnVO, K);
-        writeResultsToFile(getListOfTokens(columnVO), resultVOList, beginQueryTime);
+        for(int i = 0; i<nQueries;i++) {
+            RandomApi randomApi = new RandomApiImpl();
+            ColumnVO columnVO = randomApi.getRandomColumn(datasetPath);
 
-        System.out.println(resultVOList);
+            QueryApi queryApi = new QueryApiImpl();
+            Long beginQueryTime = new Date().getTime();
+            List<ResultVO> resultVOList = queryApi.query(columnVO, K);
+            writeResultsToFile(getListOfTokens(columnVO), resultVOList, beginQueryTime);
+            writeFullResultsToFile(getListOfTokens(columnVO), resultVOList, beginQueryTime, datasetPath);
+            System.out.println(resultVOList);
+        }
+
     }
 
     private static void buildIndex(String datasetPath) {
@@ -42,6 +48,12 @@ public class Main {
             qrw.appendResult(result);
         }
 
+        qrw.closeFile();
+    }
+
+    private static void writeFullResultsToFile(List<String[]> tokens, List<ResultVO> results, Long beginTime, String datasetPath) {
+        QueryResultsWriter qrw = new QueryResultsWriter(beginTime);
+        qrw.appendFullResults(results,datasetPath);
         qrw.closeFile();
     }
 
