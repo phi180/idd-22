@@ -10,4 +10,6 @@ public interface StatsApi {
      * */
     StatisticsVO runStatistics(String datasetPath);
 
+    void cleanCache();
+
 }

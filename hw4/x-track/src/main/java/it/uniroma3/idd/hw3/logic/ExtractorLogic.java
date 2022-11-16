@@ -5,7 +5,9 @@ import it.uniroma3.idd.hw3.domain.ExtractedLabeledData;
 import it.uniroma3.idd.hw3.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.firefox.FirefoxBinary;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -30,7 +32,10 @@ public class ExtractorLogic {
         ExtractedData extractedData = new ExtractedData();
         extractedData.setUrl(url);
 
-        WebDriver driver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+
+        WebDriver driver = new FirefoxDriver(options);
         driver.manage().window().maximize();
         driver.get(url);
 
@@ -52,7 +57,10 @@ public class ExtractorLogic {
         ExtractedLabeledData extractedLabeledData = new ExtractedLabeledData();
         extractedLabeledData.setUrl(url);
 
-        WebDriver driver = new FirefoxDriver();
+        FirefoxOptions options = new FirefoxOptions();
+        options.setHeadless(true);
+
+        WebDriver driver = new FirefoxDriver(options);
         driver.manage().window().maximize();
         driver.get(url);
 

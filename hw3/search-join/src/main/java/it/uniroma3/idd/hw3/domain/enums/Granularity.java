@@ -1,11 +1,10 @@
-package it.uniroma3.idd.domain.enums;
+package it.uniroma3.idd.hw3.domain.enums;
 
 public enum Granularity {
 
     COLUMN,
     CELL
     ;
-
     public static Granularity fromString(String granularity) {
         Granularity gran = null;
         for(Granularity g:Granularity.values()) {

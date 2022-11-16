@@ -1,6 +1,6 @@
 package it.uniroma3.idd.hw3.utils;
 
-import it.uniroma3.idd.domain.enums.Granularity;
+import it.uniroma3.idd.hw3.domain.enums.Granularity;
 
 import java.io.File;
 import java.io.FileInputStream;

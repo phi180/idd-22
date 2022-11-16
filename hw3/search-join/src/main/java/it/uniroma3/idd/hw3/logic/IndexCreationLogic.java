@@ -2,7 +2,7 @@ package it.uniroma3.idd.hw3.logic;
 
 import it.uniroma3.idd.hw3.api.ParseApi;
 import it.uniroma3.idd.hw3.api.StatsApi;
-import it.uniroma3.idd.domain.enums.Granularity;
+import it.uniroma3.idd.hw3.domain.enums.Granularity;
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.StatisticsVO;
