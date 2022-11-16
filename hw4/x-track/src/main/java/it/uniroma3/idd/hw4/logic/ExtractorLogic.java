@@ -9,8 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.time.Duration;
 import java.util.HashMap;
@@ -19,7 +17,6 @@ import java.util.Map;
 
 public class ExtractorLogic {
 
-    private static final Logger logger = LoggerFactory.getLogger(ExtractorLogic.class);
     private static final int MAX_WAIT_DURATION = 5;
 
     public ExtractorLogic() {
@@ -27,8 +24,6 @@ public class ExtractorLogic {
     }
 
     public ExtractedData extractData(String url, List<String> xpaths) {
-        logger.info("ExtractorLogic - extractLabeledData(): url=" + url + ", xpaths=" + xpaths);
-
         ExtractedData extractedData = new ExtractedData();
         extractedData.setUrl(url);
 
@@ -46,14 +41,10 @@ public class ExtractorLogic {
 
         driver.close();
 
-        logger.info("ExtractorLogic - extractLabeledData(): extractedData=" + extractedData);
-
         return extractedData;
     }
 
     public ExtractedLabeledData extractLabeledData(String url, Map<String,List<String>> label2xpath) {
-        logger.info("ExtractorLogic - extractLabeledData(): url=" + url + ", label2xpath=" + label2xpath);
-
         ExtractedLabeledData extractedLabeledData = new ExtractedLabeledData();
         extractedLabeledData.setUrl(url);
 
@@ -74,15 +65,12 @@ public class ExtractorLogic {
                             .until(ExpectedConditions.presenceOfElementLocated(By.xpath(xpath))).getText();
                     extractedLabeledData.getLabel2xpathData().get(label).put(xpath, result);
                 } catch(Exception e) {
-                    logger.info("Error while extracting " + xpath);
-                    logger.info(e.getMessage());
+                    e.printStackTrace();
                 }
             }
         }
 
         driver.close();
-
-        logger.info("ExtractorLogic - extractLabeledData(): extractedLabeledData=" + extractedLabeledData);
 
         return extractedLabeledData;
     }

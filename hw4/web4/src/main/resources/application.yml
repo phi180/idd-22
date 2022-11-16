@@ -29,6 +29,25 @@ spring:
       content-type: text/html
   cloud:
     consul:
+      enabled: false
+      config.enabled: false
+
+server:
+  #port: ${PORT:${SERVER_PORT:0}}
+  port: 8080
+  servlet:
+    context-path: /
+
+---
+spring:
+  config.activate.on-profile: docker
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://xtrackdb:5432/xtrackdb
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  cloud:
+    consul:
       host: consul
       port: 8500
       discovery:
@@ -42,12 +61,4 @@ spring:
         queryPassing: true
     loadbalancer:
       ribbon.enabled: false
-
-
-server:
-  #port: ${PORT:${SERVER_PORT:0}}
-  port: 8080
-  servlet:
-    context-path: /
-
 
