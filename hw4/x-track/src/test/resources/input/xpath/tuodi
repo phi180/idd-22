@@ -1,0 +1,5 @@
+Nome prodotto#//div[@class="prodotto-descrizioneweb"]/span[1]
+Codice#//div[@class="prodotto-codiceean"]/span[1]
+IVA#//div[@class="prodotto-codiceiva"]/span[1]
+Prezzo al dettaglio#//div[contains(@class,"prodotto-prezzo-kilo")]/div[1]
+Prezzo#//div[@class="prodotto-quantity"]/span[2]

@@ -1,0 +1,5 @@
+Nome prodotto#//div[@class="product"]/h1[contains(@class,"product-name")]
+Caratteristiche#//h4[text()="Caratteristiche:"]/following-sibling::div/div
+Quantità#//h4[text()="Quantità:"]/following-sibling::div/div
+Produttore#//h4[text()="Informazioni produttore:"]/following-sibling::div/div
+Informazioni nutrizionali#//div[contains(@class,"nutritional-info")]/h4[text()="*AR = Assunzioni di riferimento di un adulto medio:"]/following-sibling::div

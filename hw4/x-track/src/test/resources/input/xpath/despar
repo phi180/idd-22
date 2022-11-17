@@ -1,0 +1,5 @@
+Prezzo#//div[@class="price-info"]/div[@class="price-info-val"]/descendant::*/div[@class="price-wrap"]/span[@class="price"]
+Nome prodotto#//div[@class="popup-product-info"]/div[1]/h2
+Paese di produzione#//div[contains(text(),"Paese di Produzione")]
+Dettaglio prezzo#//div[@class="popup-product-info"]/div[@class="popup-product-info__wrap-cta"]/h3[1]
+Quantità#//div[@class="popup-product-info"]/div[@class="popup-product-info__wrap-cta"]/h3[2]

@@ -1,0 +1,5 @@
+Marca#//main/div[@class="v-main__wrap"]/div[@class="content-wrap"]/descendant::div[@class="container product-detail"]/descendant::div[@class="row"]/descendant::div[@class="product-brand"]
+Nome prodotto#//main/div[@class="v-main__wrap"]/div[@class="content-wrap"]/descendant::div[@class="container product-detail"]/descendant::div[@class="row"]/descendant::div[@class="product-name"]
+Quantità#//main/div[@class="v-main__wrap"]/div[@class="content-wrap"]/descendant::div[@class="container product-detail"]/descendant::div[@class="row"]/descendant::div[contains(@class,"product-descr")]/strong
+Dettaglio prezzo#//main/div[@class="v-main__wrap"]/div[@class="content-wrap"]/descendant::div[@class="container product-detail"]/descendant::div[@class="row"]/descendant::div[contains(@class,"product-descr")]/span
+Prezzo#//main/div[@class="v-main__wrap"]/div[@class="content-wrap"]/descendant::div[@class="container product-detail"]/descendant::div[@class="row"]/descendant::div[@itemprop="price"]/div

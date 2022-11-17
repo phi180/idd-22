@@ -63,6 +63,30 @@ class ExtractorApiImplTest {
         exec(datasetName);
     }
 
+    @Test
+    void getLabeledDataFromXpathDespar() {
+        String datasetName = "despar";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathEurospin() {
+        String datasetName = "eurospin";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathGros() {
+        String datasetName = "gros";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathTuodi() {
+        String datasetName = "tuodi";
+        exec(datasetName);
+    }
+
     /** private methods */
 
     private void exec(String datasetName) {
