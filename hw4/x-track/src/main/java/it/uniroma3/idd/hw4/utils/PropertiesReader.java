@@ -1,16 +1,13 @@
-package it.uniroma3.idd.hw3.utils;
+package it.uniroma3.idd.hw4.utils;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
-import java.util.logging.Logger;
 
-import static it.uniroma3.idd.hw3.utils.Utils.getResourceFullPath;
+import static it.uniroma3.idd.hw4.utils.Utils.getResourceFullPath;
 
 public class PropertiesReader {
-
-    private static final Logger logger = Logger.getLogger(PropertiesReader.class.toString());
 
     private static final String PROPERTIES_FILE = "application.properties";
 
@@ -20,7 +17,6 @@ public class PropertiesReader {
             Properties prop = new Properties();
             prop.load(input);
             property = prop.getProperty(propertyName);
-            logger.info("getProperty() - property="+ property);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
