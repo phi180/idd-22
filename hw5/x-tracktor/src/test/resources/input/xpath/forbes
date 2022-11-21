@@ -1,0 +1,5 @@
+Name#//div[@class="listuser-header"]/div[@class="listuser-header__name"]
+Location#//div[@class="listuser-header"]/div/div[@class="listuser-header__headline--premium-location"]
+Industry#//div[@class="listuser-body listuser-spacing"]/div/div[@class="listuser-content__block person-stats"]/div/span[text()="Industry"]/following-sibling::span/span
+Founded#//div[@class="listuser-body listuser-spacing"]/div/div[@class="listuser-content__block person-stats"]/div/span[text()="Founded"]/following-sibling::span/span
+Revenue#//div[@class="listuser-content__block financial-summary"]/div[@class="listuser-financial-data"]/div/div[text()="Revenue"]/following-sibling::div
