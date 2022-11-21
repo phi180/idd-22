@@ -1,0 +1,5 @@
+Name#//div[@id="azienda"]
+Revenue#//div[@id="fatturato"]/div[@class="blocco"]/div[@class="bloccoSx"]/div[2]
+Sector#//div[@id="sintesi"]/table/tbody/tr/td[text()="Settore"]/following-sibling::td
+Address#//div[@id="sintesi"]/table/tbody/tr/td[text()="Indirizzo"]/following-sibling::td
+Town#//div[@id="sintesi"]/table/tbody/tr/td[text()="Città"]/following-sibling::td
