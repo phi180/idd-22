@@ -1,5 +1,6 @@
 package it.uniroma3.idd.api;
 
+import it.uniroma3.idd.logic.singleton.WebDriverSingleton;
 import it.uniroma3.idd.utils.Constants;
 import it.uniroma3.idd.utils.ExtractorThreadExecutor;
 import it.uniroma3.idd.utils.Utils;
@@ -17,8 +18,6 @@ class ExtractorApiImplTest {
     private static final String SEPARATOR = "#";
     private static final String SLASH = "/";
     private static final String TXT_EXTENSION = ".txt";
-
-    private static final int NUM_OF_THREADS = 1;
 
     @Test
     void getLabeledDataFromXpathDisfold() {
@@ -49,19 +48,13 @@ class ExtractorApiImplTest {
     private void exec(String datasetName) {
         System.setProperty(Constants.DATASET_PROPERTY, datasetName);
 
-        Thread[] thread = new Thread[NUM_OF_THREADS];
-
         Map<String, List<String>> label2xpaths = readLabel2Xpath(datasetName);
-        /*Map<Integer, List<String>> thread2urls = this.thread2Urls(readUrls(datasetName));
-
-        for(Map.Entry<Integer, List<String>> t2u : thread2urls.entrySet()) {
-            thread[t2u.getKey()] = new ExtractorThreadExecutor(t2u.getValue(), label2xpaths);
-            thread[t2u.getKey()].start();
-        }*/
         ExtractorApi extractorApi = new ExtractorApiImpl();
         for(String url : readUrls(datasetName)) {
             extractorApi.getLabeledDataFromXpath(url, label2xpaths);
         }
+
+        WebDriverSingleton.getInstance().close();
     }
 
     private Map<String,List<String>> readLabel2Xpath(String datasetName) {
@@ -101,21 +94,6 @@ class ExtractorApiImplTest {
         }
 
         return urls;
-    }
-
-    private Map<Integer,List<String>> thread2Urls(List<String> urls) {
-        Map<Integer,List<String>> thread2urls = new TreeMap<>();
-
-        int i = 0;
-
-        for(String url: urls) {
-            thread2urls.putIfAbsent(i, new ArrayList<>());
-            thread2urls.get(i).add(url);
-
-            i = (i+1) % NUM_OF_THREADS;
-        }
-
-        return thread2urls;
     }
 
 }

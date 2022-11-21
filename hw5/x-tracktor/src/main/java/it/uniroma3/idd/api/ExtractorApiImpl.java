@@ -10,11 +10,9 @@ import java.util.Map;
 
 public class ExtractorApiImpl implements ExtractorApi {
 
-    private ExtractorLogic extractorLogic = new ExtractorLogic();
-
     @Override
     public ExtractedLabeledDataVO getLabeledDataFromXpath(String url, Map<String, List<String>> label2xpaths) {
-        //ExtractorLogic extractorLogic = new ExtractorLogic();
+        ExtractorLogic extractorLogic = new ExtractorLogic();
         ExtractedLabeledData extractedData = extractorLogic.extractLabeledData(url, label2xpaths);
 
         ExtractedLabeledDataVO extractedLabeledDataVO = toExtractedLabeledDataVO(extractedData);
