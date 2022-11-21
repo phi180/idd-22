@@ -1,0 +1,7 @@
+Name#//div[@class="clearfix group-header"]/div/h1/a
+Country#//div[@class="clearfix group-header"]/descendant::div[text()="Headquarters Country"]/following-sibling::div/div/a
+Market Value#//div[@class="clearfix group-header"]/descendant::div[contains(text(),"Market Value")][1]/following-sibling::div
+Number of Employees#//div[@class="clearfix group-left"]/descendant::div[text()="Number of Employees"]/following-sibling::div
+IPO Year#//div[@class="clearfix group-right"]/descendant::div[text()="IPO Year"]/following-sibling::div
+CEO#//div[@class="clearfix group-right"]/descendant::div[text()="CEO:"]/following-sibling::div
+Founded Year#//div[@class="clearfix group-right"]/descendant::div[text()="Founded Year"]/following-sibling::div
