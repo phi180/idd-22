@@ -51,6 +51,10 @@ public class Statistics {
         return Utils.getStandardDeviation(numOfDistinctValues2numberOfColumns);
     }
 
+    public Double getStandardDevRows2Tables() {
+        return Utils.getStandardDeviation(numOfRows2numOfTables);
+    }
+
     /** increase methods */
 
     public void increaseNumberOfTables() {

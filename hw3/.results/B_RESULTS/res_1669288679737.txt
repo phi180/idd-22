@@ -1,0 +1,7 @@
+Timestamp: 1669288679737
+Query tokens:  | - | charles a wolverton  | - | t millet hand  | - | james c auchincloss  | - | frank a mathews jr  | - | charles a eaton  | - | clifford p case  | - | j parnell thomas  | - | gordon canfield  | - | harry lancaster towe  | - | fred a hartley jr  | - | frank sundstrom  | - | robert w kean  | - | mary teresa norton  | - | edward j hart 
+5a709419c868a712fd736d23:1
+5a709419c868a712fd736d47:1
+5a70941ac868a712fd736d6b:1
+5a709419c868a712fd736cff:1
+Elapsed time: 353ms

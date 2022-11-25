@@ -1,0 +1,22 @@
+Timestamp: 1669275747674
+Query tokens:  | - | martyrdom of st sebastian  | - | madonna di san simone  | - | deposition  | - | rest on the flight to egypt  | - | nativity  | - | the vision of st francis  | - | madonna del popolo  | - | entombment  | - | martyrdom of san vitale  | - | circumcision  | - | annuciation  | - | aeneas flight from troy  | - | st jerome  | - | portrait of francisco ii della rovere  | - | christ and mary magdalen noli me tangere  | - | entombment etching  | - | quintilia fischeri  | - | annunciation etching  | - | st francis receives the stigmata drawing  | - | madonna with sts simon and jude  | - | vocation of saints peter and andrew  | - | madonna and child with the infant john the baptist and st joseph madonna with the cat  | - | communion of the apostles 
+5a7091c6c868a712fd732e16:0
+5a70b7c1c868a712fd76e27d:0
+5a70def4c868a712fd7a390c:1
+5a70a7efc868a712fd757f32:3
+5a70b1fcc868a712fd767235:3
+5a70968fc868a712fd73d246:1
+5a708ba0c868a712fd72ba57:1
+5a708d5ac868a712fd72d4e0:0
+5a70986cc868a712fd73fee2:0
+5a70e431c868a712fd7ab381:0
+5a70e8e8c868a712fd7b30bd:0
+5a70e12dc868a712fd7a70f4:0
+5a70b205c868a712fd7673c3:3
+5a70e9d8c868a712fd7b4545:0
+5a70e992c868a712fd7b404b:0
+5a70ad2cc868a712fd75fd4f:1
+5a70e902c868a712fd7b338e:0
+5a709a27c868a712fd742908:0
+5a70c797c868a712fd783065:0
+Elapsed time: 868msElapsed time: 500401ms

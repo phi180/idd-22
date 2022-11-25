@@ -1,0 +1,6 @@
+Timestamp: 1669314427309
+Query tokens:  | - | roger fitzgerald  | - | see list of members  | - | susan sullivan  | - | jack byrne  | - | tom rideout  | - | kevin parsons  | - | kevin pollard  | - | trevor taylor  | - | paul oram  | - | marshall dean  | - | sandy collins  | - | elizabeth marshall  | - | paul davis  | - | dianne whalen  | - | david brazil  | - | danny williams  | - | vaughn granter 
+5a70bdc4c868a712fd775b6a:0
+5a70dd1fc868a712fd7a0e5a:1
+5a70dd1fc868a712fd7a0e5a:3
+Elapsed time: 369msElapsed time: 1415634ms

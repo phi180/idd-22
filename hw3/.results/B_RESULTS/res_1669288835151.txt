@@ -1,0 +1,12 @@
+Timestamp: 1669288835151
+Query tokens:  | - | whitford brown avenue waitangirua papakowhai  | - | the ramp porirua city centre titahi bay  | - | mungavin avenuetitahi bay road eastern porirua tawa elsdon titahi bay  | - | transmission gully motorway  | - | transmission gully motorway  | - | takapu road redwood tawa linden greenacres grenada north  | - | grenada drivewestchester drive glenside churton park grenada village  | - | johnsonville khandallah  | - | johnsonville  | - | newlands road newlands 
+5a70a9a9c868a712fd75aaea:1
+5a7099aec868a712fd741d13:2
+5a70baabc868a712fd771acf:2
+5a7099aec868a712fd741d13:0
+5a70a5cfc868a712fd755625:0
+5a70a5cfc868a712fd755625:1
+5a70a5cfc868a712fd75562c:1
+5a70baabc868a712fd771acf:0
+5a70baabc868a712fd771acf:1
+Elapsed time: 260ms

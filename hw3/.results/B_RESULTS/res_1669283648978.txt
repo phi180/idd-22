@@ -1,0 +1,6 @@
+Timestamp: 1669283648978
+Query tokens:  | - | silver  | - | 23x15px gyrgy kolonics hun  | - | 23x15px victor partnoi rou  | - | 23x15px pavel bednar cze  | - | 23x15px denmark christian frederiksen arne nielsson  | - | 23x15px france olivier boldin didier hoyer  | - | 23x15px united kingdom andrew train stephen train  | - | 23x15px russia andrey kabanov sergey chemerov pavel konovalov aleksandr kostoglod  | - | 23x15px russia andrey kabanov sergey chemerov pavel konovalov aleksandr kostoglod 
+5a70b351c868a712fd769158:1
+5a70b362c868a712fd769262:2
+5a70b362c868a712fd769262:1
+Elapsed time: 196ms

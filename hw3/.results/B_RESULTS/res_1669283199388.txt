@@ -1,0 +1,11 @@
+Timestamp: 1669283199388
+Query tokens:  | - | dehradun  | - | haridwar  | - | haldwanicumkathgodam  | - | rudrapur  | - | kashipur  | - | roorkee 
+5a70e4fdc868a712fd7acd52:1
+5a70e4fdc868a712fd7acd52:0
+5a70cee6c868a712fd78ee23:0
+5a70dcc9c868a712fd7a070e:0
+5a70d572c868a712fd797677:0
+5a70ea68c868a712fd7b5425:0
+5a70db01c868a712fd79de8f:0
+5a70ba9bc868a712fd7718ce:0
+Elapsed time: 70ms
