@@ -1,0 +1,8 @@
+Timestamp: 1669230349429
+Query tokens:  | - | kevin harvick  | - | jeff gordon  | - | matt kenseth  | - | brad keselowski  | - | denny hamlin  | - | joey logano  | - | kurt busch  | - | dale earnhardt jr  | - | greg biffle  | - | marcos ambrose  | - | ryan newman  | - | martin truex jr  | - | kyle larson r  | - | jamie mcmurray  | - | carl edwards  | - | a j allmendinger  | - | ricky stenhouse jr  | - | aric almirola  | - | brian vickers  | - | tony stewart  | - | kasey kahne  | - | danica patrick  | - | paul menard  | - | david gilliland  | - | david ragan  | - | michael annett r  | - | ty dillon  | - | reed sorenson  | - | landon cassill  | - | j j yeley  | - | michael mcdowell  | - | alex bowman r  | - | joey gase  | - | kyle busch  | - | casey mears  | - | mike wallace  | - | justin allgaier r  | - | austin dillon r  | - | jimmie johnson  | - | clint bowyer  | - | josh wise  | - | cole whitt r  | - | mike bliss 
+5a70df1ac868a712fd7a3b8f:0
+5a70df1ac868a712fd7a3b90:0
+5a70dda1c868a712fd7a1bfc:0
+5a70dccdc868a712fd7a07e3:0
+5a70dda1c868a712fd7a1bfd:0
+Elapsed time: 603msElapsed time: 155179ms

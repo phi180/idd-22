@@ -1,0 +1,17 @@
+Timestamp: 1669228631590
+Query tokens:  | - | 59 37 reviews  | - | 52 42 reviews  | - | 56 39 reviews  | - | 53 21 reviews  | - | 33 29 reviews  | - | 55 47 reviews  | - | 44 51 reviews  | - | na 
+5a70befec868a712fd7775d5:1
+5a7091ecc868a712fd733287:1
+5a709950c868a712fd7412ee:1
+5a708b01c868a712fd72b026:1
+5a70a981c868a712fd75a747:1
+5a7096cbc868a712fd73d829:1
+5a70cbe3c868a712fd7894bb:1
+5a7091ecc868a712fd733287:0
+5a709a8fc868a712fd743715:0
+5a70e720c868a712fd7aff8a:1
+5a708a8fc868a712fd72a8fa:2
+5a70df16c868a712fd7a3b4b:1
+5a7096cbc868a712fd73d829:0
+5a70befec868a712fd7775d5:0
+Elapsed time: 427ms

@@ -17,8 +17,10 @@ import java.util.Objects;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+import static it.uniroma3.idd.hw3.utils.Constants.RESULTS_PATH_PROPERTY;
+
 public class QueryResultsWriter {
-    private static final String RESULTS_DIR = PropertiesReader.getResultsDir();
+    private static final String RESULTS_DIR = PropertiesReader.getProperty(RESULTS_PATH_PROPERTY);
     private static final Logger logger = Logger.getLogger(QueryResultsWriter.class.toString());
 
     private Long beginTimestamp;
@@ -58,10 +60,13 @@ public class QueryResultsWriter {
         }
     }
 
-    public void appendFullResults(List<ResultVO> results, String datasetPath) {
+    public void appendFullResults(List<String[]> tokens, List<ResultVO> results, String datasetPath) {
         logger.info("QueryResultsWriter - appendFullResults(): datasetPath="+datasetPath);
 
         ParseApi parseApi = new ParseApiImpl();
+
+        HtmlTableResultWriter htrw = new HtmlTableResultWriter();
+        htrw.appendColumnQuery(tokens,beginTimestamp);
 
         try {
             DatasetBuffer datasetBuffer = new DatasetBuffer(datasetPath);
@@ -75,7 +80,7 @@ public class QueryResultsWriter {
 
                 if(currentTableResults.stream().map(ResultVO::getTableId).collect(Collectors.toList()).contains(tableVO.getOid())) {
                     List<Long> columnsNums = currentTableResults.stream().map(ResultVO::getColumnNum).collect(Collectors.toList());
-                    new HtmlTableResultWriter().appendResultTable(tableVO, columnsNums, beginTimestamp);
+                    htrw.appendResultTable(tableVO, columnsNums, beginTimestamp);
                 }
 
             }

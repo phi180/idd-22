@@ -1,0 +1,9 @@
+Timestamp: 1669283606277
+Query tokens:  | - | mireia belmonte garca  | - | va risztov  | - | erika villacija garca  | - | camelia potec  | - | julia hassler  | - | marianna lymperta  | - | theodora giareni  | - | donata kilijanska 
+5a70d10ac868a712fd7911af:0
+5a70d103c868a712fd7910eb:0
+5a70cabfc868a712fd787d6b:0
+5a70cabbc868a712fd787d10:0
+5a70d115c868a712fd7912b6:0
+5a70d103c868a712fd7910ec:0
+Elapsed time: 148ms

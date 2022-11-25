@@ -51,11 +51,6 @@ public class QueryApiImpl implements QueryApi {
         return results;
     }
 
-    @Override
-    public boolean existsColumn(String tableId, Long columnNum) {
-        return new QueryLogic().existsColumnInIndex(tableId,columnNum);
-    }
-
     /** PRIVATE METHODS */
 
     private String[] splitToTokens(String cellContent) {

@@ -29,7 +29,7 @@ public class QueryLogic {
 
         Map<ResultColumn, Integer> set2count = new HashMap<>();
 
-        Path path = Paths.get(PropertiesReader.getIndexFolderPath());
+        Path path = Paths.get(PropertiesReader.getProperty(INDEX_PATH_PROPERTY));
 
         try (Directory directory = FSDirectory.open(path)) {
             try (IndexReader reader = DirectoryReader.open(directory)) {
@@ -43,10 +43,10 @@ public class QueryLogic {
                     }
 
                     IndexSearcher searcher = new IndexSearcher(reader);
-                    Map<ResultColumn, Integer> results2occurrences = runQuery(searcher, booleanQueryBuilder.build());
-                    for(Map.Entry<ResultColumn, Integer> result: results2occurrences.entrySet()) {
-                        set2count.putIfAbsent(result.getKey(), 0);
-                        set2count.put(result.getKey(), set2count.get(result.getKey())+result.getValue());
+                    List<ResultColumn> results = runQuery(searcher, booleanQueryBuilder.build());
+                    for(ResultColumn result: results) {
+                        set2count.putIfAbsent(result, 0);
+                        set2count.put(result, set2count.get(result)+1);
                     }
                 }
             } finally {
@@ -76,35 +76,12 @@ public class QueryLogic {
         return results;
     }
 
-    public boolean existsColumnInIndex(String tableId,Long columnNum) {
-        boolean existsTable;
-        Path path = Paths.get(PropertiesReader.getIndexFolderPath());
-
-        try (Directory directory = FSDirectory.open(path)) {
-            try (IndexReader reader = DirectoryReader.open(directory)) {
-                BooleanQuery.Builder booleanQueryBuilder = new BooleanQuery.Builder();
-                Query termQueryTable = new TermQuery(new Term(TABLE_ID, tableId));
-                Query termQueryColumn = new TermQuery(new Term(COLUMN_NUM, String.valueOf(columnNum)));
-                booleanQueryBuilder.add(new BooleanClause(termQueryTable, BooleanClause.Occur.MUST))
-                        .add(new BooleanClause(termQueryColumn, BooleanClause.Occur.MUST));
-                IndexSearcher searcher = new IndexSearcher(reader);
-                existsTable = runQuery(searcher, booleanQueryBuilder.build()).size() > 0;
-            } finally {
-                directory.close();
-            }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-
-        return existsTable;
-    }
-
     /** PRIVATE METHODS */
 
-    private Map<ResultColumn,Integer> runQuery(IndexSearcher searcher, Query query) throws IOException {
+    private List<ResultColumn> runQuery(IndexSearcher searcher, Query query) throws IOException {
         logger.info("QueryLogic - runQuery(): numDocs="+searcher.getIndexReader().numDocs());
 
-        Map<ResultColumn,Integer> results2occurrences = new HashMap<>();
+        List<ResultColumn> results = new ArrayList<>();
 
         TopDocs hits = searcher.search(query, N_QUERY_RESULTS);
         for (int i = 0; i < hits.scoreDocs.length; i++) {
@@ -114,10 +91,10 @@ public class QueryLogic {
             ResultColumn result = new ResultColumn(doc.get(TABLE_ID),
                     Long.valueOf(doc.get(COLUMN_NUM)));
 
-            results2occurrences.put(result,1);
+            results.add(result);
         }
 
-        return results2occurrences;
+        return results;
     }
 
 }
