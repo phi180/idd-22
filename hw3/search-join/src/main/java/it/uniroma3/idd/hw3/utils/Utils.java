@@ -2,11 +2,14 @@ package it.uniroma3.idd.hw3.utils;
 
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
+import it.uniroma3.idd.entity.ResultVO;
+import it.uniroma3.idd.hw3.logic.result.QueryResultsWriter;
 
 import java.io.*;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -50,7 +53,7 @@ public class Utils {
         return file.getAbsolutePath();
     }
 
-    public static double getChebychevKValue(float percentage) {
+    public static double getChebyshevKValue(float percentage) {
         return 1/Math.sqrt(percentage);
     }
 
@@ -65,6 +68,32 @@ public class Utils {
         }
 
         return columnTokens.size();
+    }
+
+    public static void writeResultsToFile(List<String[]> tokens, List<ResultVO> results, Long beginTime) {
+        QueryResultsWriter qrw = new QueryResultsWriter(beginTime);
+        qrw.initQueryResultsFile(tokens);
+
+        for(ResultVO result : results) {
+            qrw.appendResult(result);
+        }
+
+        qrw.closeFile();
+    }
+
+    public static void writeFullResultsToFile(List<String[]> tokens, List<ResultVO> results, Long beginTime, String datasetPath) {
+        QueryResultsWriter qrw = new QueryResultsWriter(beginTime);
+        qrw.appendFullResults(tokens,results,datasetPath);
+        qrw.closeFile();
+    }
+
+    public static List<String[]> getListOfTokens(ColumnVO columnVO) {
+        List<String[]> groupsOfTokens = new ArrayList<>();
+        for(CellVO cellVO : columnVO.getCells().values()) {
+            String[] tokens = splitToTokens(cellVO.getContent());
+            groupsOfTokens.add(tokens);
+        }
+        return groupsOfTokens;
     }
 
     /** PRIVATE METHODS */

@@ -1,5 +1,0 @@
-Timestamp: 1667140883424
-2021 | - | 
-presidenti4834r439:2 = 2021-2022
-presidenti4834r439:2 = 2018-2021
-Elapsed 3ms

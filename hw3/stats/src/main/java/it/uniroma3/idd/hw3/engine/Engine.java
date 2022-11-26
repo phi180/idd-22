@@ -24,7 +24,6 @@ public class Engine {
         Statistics statistics = new Statistics();
 
         DatasetBuffer datasetBuffer = null;
-        Long beginTime = new Date().getTime();
 
         try {
             datasetBuffer = new DatasetBuffer(filePath);
@@ -56,8 +55,6 @@ public class Engine {
                 statistics.getNumOfDistinctValues2numberOfColumns().put(columnDistinctTokens, statistics.getNumOfDistinctValues2numberOfColumns().get(columnDistinctTokens)+1);
             }
         }
-
-        StatsWriter.writeStatistics(statistics, beginTime);
 
         return statistics;
     }

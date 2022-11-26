@@ -1,0 +1,7 @@
+Timestamp: 1669228897220
+Query tokens:  | - | james reid until appointed to senate  | - | frank stillman barnard byelection of 18881122  | - | donald chisholm died 5 april 1890  | - | gordon edward corbould byelection of 18900619  | - | david william gordon  | - | edgar crow baker resigned 2 may 1889  | - | noah shakespeare resigned june 1887 due to postmaster appointment  | - | edward gawler prior byelection of 18880123 replaces noah shakespeare  | - | thomas earle byelection of 18891028 replaces edgar baker  | - | john andrew mara 
+5a709a48c868a712fd742d13:1
+5a70980ec868a712fd73f8aa:1
+5a709077c868a712fd731406:3
+5a709a47c868a712fd742cdb:1
+Elapsed time: 442ms

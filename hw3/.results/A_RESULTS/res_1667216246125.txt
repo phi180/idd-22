@@ -1,0 +1,5 @@
+Timestamp: 1667216246125
+Query tokens:  | - | 23x15px taipei taiwan  | - | 23x15px taipei taiwan  | - | 23x15px taipei taiwan  | - | 23x15px colombo sri lanka  | - | 23x15px colombo sri lanka  | - | 23x15px colombo sri lanka  | - | 23x15px colombo sri lanka  | - | 23x15px hyderabad india  | - | 23x15px hyderabad india  | - | 23x15px hyderabad india 
+5a70be07c868a712fd776170:1 = 
+5a70d597c868a712fd7979f0:3 = 
+Elapsed 529593ms

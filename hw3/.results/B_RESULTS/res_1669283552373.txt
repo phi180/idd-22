@@ -1,0 +1,6 @@
+Timestamp: 1669283552373
+Query tokens:  | - | alcohol  | - | ketone  | - | aldehyde  | - | acyl halide  | - | carbonate  | - | carboxylate  | - | carboxylic acid  | - | ester  | - | methoxy  | - | hydroperoxide  | - | peroxide  | - | ether  | - | hemiacetal  | - | hemiketal  | - | acetal  | - | ketal or acetal  | - | orthoester  | - | heterocycle  | - | orthocarbonate ester 
+5a708a9dc868a712fd72a9c5:0
+5a708a9dc868a712fd72a9c5:1
+5a708a9dc868a712fd72a9c5:2
+Elapsed time: 121ms

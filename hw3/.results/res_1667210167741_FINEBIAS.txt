@@ -1,5 +1,0 @@
-Timestamp: 1667210167741
-Query tokens:  | - | gcr mascara 23x15px  | - | vitalo 23x15px  | - | far rabat 23x15px  | - | black rhinos 23x15px 
-5a708e65c868a712fd72e9b3:1 = 
-5a708e64c868a712fd72e9ac:2 = 
-Elapsed 308728ms

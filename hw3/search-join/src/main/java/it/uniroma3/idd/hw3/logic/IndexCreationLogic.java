@@ -2,7 +2,6 @@ package it.uniroma3.idd.hw3.logic;
 
 import it.uniroma3.idd.hw3.api.ParseApi;
 import it.uniroma3.idd.hw3.api.StatsApi;
-import it.uniroma3.idd.hw3.domain.enums.Granularity;
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.StatisticsVO;
@@ -41,13 +40,12 @@ public class IndexCreationLogic {
     private final Logger logger = Logger.getLogger(IndexCreationLogic.class.toString());
 
     private static final String STOPWORDS_FILE = "stopwords.txt";
-
-    private static final Granularity INDEX_GRANULARITY = PropertiesReader.getGranularity();
+    private final static String EMPTY_SPACE = " ";
 
     private ParseApi parseApi = new ParseApiImpl();
 
     public void createIndex(String datasetPath) throws IOException {
-        float precision = PropertiesReader.getPrecision();
+        float precision = Float.parseFloat(PropertiesReader.getProperty(PRECISION_PROPERTY));
         StatisticsVO statisticsVO = this.getStatistics(datasetPath);
 
         DatasetBuffer datasetBuffer = null;
@@ -58,7 +56,7 @@ public class IndexCreationLogic {
             throw new RuntimeException(e);
         }
 
-        Directory directory = this.getIndexDirectory(PropertiesReader.getIndexFolderPath());
+        Directory directory = this.getIndexDirectory(PropertiesReader.getProperty(INDEX_PATH_PROPERTY));
 
         CustomAnalyzer.Builder contentAnalyzerBuilder = CustomAnalyzer.builder()
                 .withTokenizer(WhitespaceTokenizerFactory.class)
@@ -71,7 +69,6 @@ public class IndexCreationLogic {
 
         Analyzer analyzer = new PerFieldAnalyzerWrapper(new StandardAnalyzer(), perFieldAnalyzers);
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
-        // config.setCodec(new SimpleTextCodec());
 
         IndexWriter writer = new IndexWriter(directory, config);
         writer.deleteAll();
@@ -84,14 +81,13 @@ public class IndexCreationLogic {
                 break;
 
             for(Map.Entry<Integer, ColumnVO> columnVOEntry: tableVO.getColumns().entrySet()) {
+                Integer columnNum = columnVOEntry.getKey();
+                ColumnVO columnVO = columnVOEntry.getValue();
 
-                int distinctColumnTokens = Utils.countDistinctTokens(columnVOEntry.getValue(),precision);
-                if(chebychevCondition(distinctColumnTokens,precision,statisticsVO)) {
+                int distinctColumnTokens = Utils.countDistinctTokens(columnVO,precision);
 
-                    if(INDEX_GRANULARITY.equals(Granularity.CELL))
-                        insertCellsInIndex(writer, tableVO.getOid(), columnVOEntry.getKey(),columnVOEntry.getValue());
-                    else if(INDEX_GRANULARITY.equals(Granularity.COLUMN))
-                        insertColumnInIndex(writer, tableVO.getOid(), columnVOEntry.getKey(),columnVOEntry.getValue());
+                if(chebyshevCondition(distinctColumnTokens,precision,statisticsVO)) {
+                    insertColumnInIndex(writer, tableVO.getOid(), columnNum,columnVO);
                 }
             }
 
@@ -120,14 +116,13 @@ public class IndexCreationLogic {
     }
 
     private void insertColumnInIndex(IndexWriter writer, String tableOid, Integer colnum, ColumnVO columnVO) {
-        final String EMPTY_SPACE = " ";
         StringBuilder content = new StringBuilder();
 
         for(CellVO cellVO: columnVO.getCells().values()) {
             content.append(cellVO.getContent()).append(EMPTY_SPACE);
         }
 
-        Document doc = generateDocument(tableOid, colnum, 0,content.toString(), false);
+        Document doc = generateDocument(tableOid, colnum,content.toString());
 
         try {
             writer.addDocument(doc);
@@ -136,37 +131,11 @@ public class IndexCreationLogic {
         }
     }
 
-    private void insertCellsInIndex(IndexWriter writer, String tableOid, Integer colnum, ColumnVO columnVO) throws IOException {
-        String header = columnVO.getHeader();
-        if(header!=null) {
-            Document headerDoc = generateDocument(tableOid, colnum, 0,
-                    header, true);
-            writer.addDocument(headerDoc);
-        }
-
-        columnVO.getCells().entrySet().parallelStream().forEach(
-                cellVOEntry -> {
-                    Document doc = generateDocument(tableOid, colnum, cellVOEntry.getKey(),
-                            cellVOEntry.getValue().getContent(), false);
-                    try {
-                        writer.addDocument(doc);
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                }
-        );
-    }
-
-    private Document generateDocument(String tableOid, int columnNum, int rowNum, String cellContent, boolean isHeader) {
+    private Document generateDocument(String tableOid, int columnNum, String cellContent) {
         Document doc = new Document();
         doc.add(new StringField(TABLE_ID, tableOid, Field.Store.YES));
         doc.add(new StringField(COLUMN_NUM, String.valueOf(columnNum), Field.Store.YES));
         doc.add(new TextField(CONTENT, cellContent, Field.Store.NO));
-
-        if(INDEX_GRANULARITY.equals(Granularity.CELL)) {
-            doc.add(new StringField(ROW_NUM, String.valueOf(rowNum), Field.Store.YES));
-            doc.add(new StringField(IS_HEADER, String.valueOf(isHeader), Field.Store.NO));
-        }
 
         return doc;
     }
@@ -176,12 +145,12 @@ public class IndexCreationLogic {
         return statsApi.runStatistics(datasetPath);
     }
 
-    private boolean chebychevCondition(double numberOfTokens, float precision, StatisticsVO statisticsVO) {
+    private boolean chebyshevCondition(double numberOfTokens, float precision, StatisticsVO statisticsVO) {
         if(precision == 1f)
             return true;
 
         return Math.abs(numberOfTokens-statisticsVO.getMeanDistinctElementsInColumns()) <
-                Utils.getChebychevKValue(precision)*statisticsVO.getStandardDevDistinctElements2Columns();
+                Utils.getChebyshevKValue(precision)*statisticsVO.getStandardDevDistinctElements2Columns();
     }
 
 }

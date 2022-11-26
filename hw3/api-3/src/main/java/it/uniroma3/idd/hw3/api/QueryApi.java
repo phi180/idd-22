@@ -29,11 +29,4 @@ public interface QueryApi {
      * */
     List<ResultVO> query(TableVO tableVO, int k);
 
-    /**
-     * @param tableId a table identifier
-     * @param columnNum column number in a table
-     * @return true if the @param tableId exists and the column in the given @param tableId exists in the index, false otherwise
-     * */
-    boolean existsColumn(String tableId, Long columnNum);
-
 }

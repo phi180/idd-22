@@ -21,6 +21,8 @@ public class StatisticsVO {
     private Double meanNumberOfRowsForTable;
     private Double meanNumberOfEmptyCells;
     private Double meanDistinctElementsInColumns;
+
     private Double standardDevDistinctElements2Columns;
+    private Double standardDevRows2Tables;
 
 }

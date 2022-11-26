@@ -1,2 +1,0 @@
-Timestamp: 1667145096249
-Query tokens: 2758280 | - | 

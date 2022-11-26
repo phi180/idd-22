@@ -1,6 +1,0 @@
-Timestamp: 1667156411610
-Query tokens: ------kurt | - | busch | - | ------ricky | - | stenhouse | - | jr | - | ------kevin | - | harvick | - | 
-5a70cc52c868a712fd78a0c5:3 = 
-5a70cc52c868a712fd78a0c5:1 = 
-5a70909cc868a712fd73187b:1 = 
-Elapsed 318208ms

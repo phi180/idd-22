@@ -1,5 +1,0 @@
-Timestamp: 1667140883230
-milano | - | 
-citta4895843uu394:2 = Milano
-citta4895843uu394:0 = Milano
-Elapsed 3ms

@@ -1,5 +1,0 @@
-Timestamp: 1667203564139
-Query tokens:  | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - |   | - | turnout  | - | conservative hold  | - | conservative hold  | - | conservative hold  | - | conservative hold 
-5a70e519c868a712fd7ad0b7:4 = 
-5a70e519c868a712fd7ad0b9:4 = 
-Elapsed 662230ms

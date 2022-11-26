@@ -7,6 +7,7 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Logger;
@@ -16,6 +17,29 @@ public class HtmlTableResultWriter {
     private static final Logger logger = Logger.getLogger(HtmlTableResultWriter.class.toString());
 
     private static final String OUTPUT_FOLDER = "./target/html/";
+
+    public void appendColumnQuery(List<String[]> tokens, Long timestamp) {
+        File file = new File(OUTPUT_FOLDER + timestamp + ".html");
+
+        StringBuilder htmlTable = new StringBuilder();
+        htmlTable.append("<h2>Query:</h2><br><table style='border: 1px solid #999;'>");
+
+        for (String[] token : tokens) {
+            StringBuilder htmlCell = new StringBuilder();
+            Arrays.asList(token).forEach(tok -> htmlCell.append(tok).append(" "));
+
+            String rowsHtml = "<tr><td>" + htmlCell + "</td></tr>";
+            htmlTable.append(rowsHtml);
+        }
+
+        htmlTable.append("</table><br><br>");
+
+        try {
+            FileUtils.writeStringToFile(file, htmlTable.toString(), "UTF-8", true);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
     public void appendResultTable(TableVO tableVO, List<Long> columnsToShade, Long timestamp) {
         File file = new File(OUTPUT_FOLDER + timestamp + ".html");

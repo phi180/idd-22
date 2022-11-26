@@ -1,4 +1,0 @@
-Timestamp: 1667140941574
-Query tokens: 2022 | - | 
-presidenti4834r439:2 = 2021-2022
-Elapsed 7ms

@@ -1,5 +1,0 @@
-Timestamp: 1667140883418
-2016 | - | 
-presidenti4834r439:2 = 2014-2016
-presidenti4834r439:2 = 2016-2018
-Elapsed 3ms

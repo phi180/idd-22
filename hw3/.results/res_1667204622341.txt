@@ -1,6 +1,0 @@
-Timestamp: 1667204622341
-Query tokens:  | - | pallekele cricket stadium kandy  | - | seddon park hamilton  | - | kingsmead cricket ground durban 
-5a709201c868a712fd7334be:1 = 
-5a70cbe2c868a712fd78949c:4 = 
-5a70d5f8c868a712fd7981c2:0 = 
-Elapsed 617146ms

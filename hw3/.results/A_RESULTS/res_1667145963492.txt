@@ -1,0 +1,4 @@
+Timestamp: 1667145963492
+Query tokens: 2014 | - | 
+presidenti4834r439:2 = ColumnVO(header=null, cells={0=CellVO(content=Anni di carica), 1=CellVO(content=2014-2016), 2=CellVO(content=2016-2018), 3=CellVO(content=2018-2021), 4=CellVO(content=2021-2022), 5=CellVO(content=in carica)})
+Elapsed 21ms

@@ -1,7 +1,7 @@
 package it.uniroma3.idd.hw3.filesystem;
 
+import it.uniroma3.idd.entity.StatisticsVO;
 import it.uniroma3.idd.hw3.constants.Constants;
-import it.uniroma3.idd.hw3.stats.Statistics;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -10,7 +10,7 @@ import java.util.Date;
 
 public class StatsWriter {
 
-    public static void writeStatistics(Statistics statistics, Long beginTime) {
+    public static void writeStatistics(StatisticsVO statistics, Long beginTime) {
         createTargetFolder();
 
         String completeFile = "stats_" + new Date().getTime() + ".txt";

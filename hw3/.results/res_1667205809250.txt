@@ -1,8 +1,0 @@
-Timestamp: 1667205809250
-Query tokens:  | - | career  | - | 2013  | - | 2015 
-5a70a109c868a712fd74d818:2 = 
-5a709545c868a712fd738e1d:0 = 
-5a70b1ebc868a712fd766ff6:1 = 
-5a70952dc868a712fd738be5:0 = 
-5a709523c868a712fd738ab7:0 = 
-Elapsed 752299ms

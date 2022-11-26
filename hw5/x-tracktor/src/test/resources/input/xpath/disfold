@@ -1,0 +1,5 @@
+Name#//div[@class="company"]/div[@class="row"]/div/descendant::p[text()="Company"]/following-sibling::h1
+Founded#//div[@class="company"]/div[@class="row"]/div/descendant::p[contains(text(),"Founded:")]
+Employees#//div[@class="company"]/div[@class="row"]/div/descendant::p[contains(text(),"Employees:")]
+CEO#//div[@class="company"]/div[@class="row"]/div/descendant::p[contains(text(),"CEO:")]
+Top Competitor#//h2[text()="Top Competitors by Market Capitalization"]/following-sibling::div[@class="row"][1]/div[1]/table/tbody/tr[1]/td[1]/a

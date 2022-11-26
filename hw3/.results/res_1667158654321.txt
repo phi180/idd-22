@@ -1,9 +1,0 @@
-Timestamp: 1667158654321
-Query tokens: ------sarah | - | balfour | - | ------andrew | - | crowther | - | ------john | - | evans | - | ------oliver | - | wadsworth | - | ------majority | - | ------turnout | - | ------labour | - | hold | - | 
-5a70a03dc868a712fd74c623:0 = 
-5a70be8cc868a712fd776cd0:2 = 
-5a7092ffc868a712fd734ea5:3 = 
-5a709a59c868a712fd742fac:2 = 
-5a70b532c868a712fd76b7ac:3 = 
-5a70a5a2c868a712fd75526f:1 = 
-Elapsed 431227ms

@@ -1,0 +1,31 @@
+Timestamp: 1669288586111
+Query tokens:  | - | william cowper  | - | charles adderley  | - | robert lowe  | - | henry bruce  | - | henry bruce  | - | henry lowrycorry  | - | lord robert montagu  | - | lord robert montagu  | - | william edward forster  | - | viscount sandon  | - | lord george hamilton  | - | a j mundella  | - | edward stanhope  | - | sir henry holland bt  | - | sir lyon playfair  | - | sir henry holland bt  | - | sir william hart dyke bt  | - | arthur dyke acland  | - | arthur dyke acland  | - | sir john eldon gorst 
+5a708d97c868a712fd72d963:0
+5a709dc1c868a712fd748208:2
+5a709438c868a712fd7371bd:2
+5a7099b8c868a712fd741e16:0
+5a709dc1c868a712fd748208:0
+5a70aec7c868a712fd762892:2
+5a70aec7c868a712fd762892:5
+5a709e84c868a712fd7495ab:2
+5a709e84c868a712fd7495ab:0
+5a70a2f1c868a712fd750fb1:2
+5a709015c868a712fd730978:2
+5a708cc7c868a712fd72c9d6:2
+5a70aa56c868a712fd75b81c:3
+5a709bf0c868a712fd745c10:4
+5a708ee5c868a712fd72f22e:2
+5a7095bbc868a712fd73a3fd:5
+5a7095bbc868a712fd73a3fd:2
+5a70a26bc868a712fd74fe97:3
+5a7093dec868a712fd736508:1
+5a7092a9c868a712fd734623:0
+5a7092ffc868a712fd734ea4:0
+5a7097cfc868a712fd73f377:2
+5a70ae78c868a712fd761e34:1
+5a709438c868a712fd7371c3:2
+5a708d78c868a712fd72d713:0
+5a70a267c868a712fd74fe26:1
+5a709209c868a712fd7335b9:2
+5a70a6e9c868a712fd756b64:2
+Elapsed time: 1484ms

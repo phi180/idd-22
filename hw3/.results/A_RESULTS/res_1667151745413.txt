@@ -1,0 +1,6 @@
+Timestamp: 1667151745413
+Query tokens: ------23x15px | - | canada | - | ------23x15px | - | sweden | - | ------23x15px | - | canada | - | ------23x15px | - | canada | - | ------23x15px | - | canada | - | ------23x15px | - | denmark | - | 
+5a709643c868a712fd73cbe8:1 = 
+5a709643c868a712fd73cbe9:1 =
+5a709643c868a712fd73cbe8:2 =
+Elapsed 441732ms

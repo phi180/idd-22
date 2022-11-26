@@ -1,6 +1,0 @@
-Timestamp: 1667215720734
-Query tokens:  | - | instant karma  | - | strange  | - | if i die tomorrow  | - | i am 
-5a70a294c868a712fd750309:0 = 
-5a708cd8c868a712fd72cb7e:16 = 
-5a709584c868a712fd739672:4 = 
-Elapsed 445457ms

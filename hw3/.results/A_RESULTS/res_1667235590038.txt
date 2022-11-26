@@ -1,0 +1,9 @@
+Timestamp: 1667235590038
+Query tokens:  | - | s silverman  | - | j cartland  | - | a tatton  | - | j thomson  | - | majority  | - | turnout  | - | labour hold 
+5a70aaa6c868a712fd75bed9:2
+5a70aaa6c868a712fd75bedc:2
+5a70c62cc868a712fd781086:1
+5a70c03bc868a712fd779124:2
+5a7091bfc868a712fd732d79:18
+5a7091bfc868a712fd732d78:13
+Elapsed time: 273966ms
