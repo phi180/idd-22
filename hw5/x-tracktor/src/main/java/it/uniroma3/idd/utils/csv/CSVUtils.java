@@ -2,6 +2,8 @@ package it.uniroma3.idd.utils.csv;
 
 import it.uniroma3.idd.utils.Constants;
 import it.uniroma3.idd.vo.ExtractedLabeledDataVO;
+import it.uniroma3.idd.vo.RowVO;
+import it.uniroma3.idd.vo.TableVO;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -25,6 +27,28 @@ public class CSVUtils {
             appendToDataset(extractedLabeledDataVO, datasetName);
         }
     }
+
+    public static void appendToDataset(TableVO tableVO) {
+        String datasetName = System.getProperty(Constants.DATASET_PROPERTY);
+        if(datasetName==null || datasetName.isBlank()) {
+            datasetName = Constants.DEFAULT_DATASET;
+        }
+
+        String filePath = FOLDER_PATH + datasetName + CSV_EXTENSION;
+        File outputFile = new File(filePath);
+
+        try {
+            if(!tableVO.getHeaderRow().getCells().isEmpty())
+                FileUtils.writeStringToFile(outputFile, generateLine(tableVO.getHeaderRow().getCells()) + NEW_LINE,"UTF-8", true);
+
+            for(RowVO rowVO : tableVO.getRows()) {
+                FileUtils.writeStringToFile(outputFile, generateLine(rowVO.getCells()) + NEW_LINE, "UTF-8", true);
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
 
     /** private methods */
     private static void appendToDataset(ExtractedLabeledDataVO extractedLabeledDataVO, String datasetName) {

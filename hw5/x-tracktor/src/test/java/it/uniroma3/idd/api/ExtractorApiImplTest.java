@@ -2,7 +2,6 @@ package it.uniroma3.idd.api;
 
 import it.uniroma3.idd.logic.singleton.WebDriverSingleton;
 import it.uniroma3.idd.utils.Constants;
-import it.uniroma3.idd.utils.ExtractorThreadExecutor;
 import it.uniroma3.idd.utils.Utils;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -51,7 +50,7 @@ class ExtractorApiImplTest {
         Map<String, List<String>> label2xpaths = readLabel2Xpath(datasetName);
         ExtractorApi extractorApi = new ExtractorApiImpl();
         for(String url : readUrls(datasetName)) {
-            extractorApi.getLabeledDataFromXpath(url, label2xpaths);
+            extractorApi.getLabeledDataFromSelector(url, label2xpaths);
         }
 
         WebDriverSingleton.getInstance().close();

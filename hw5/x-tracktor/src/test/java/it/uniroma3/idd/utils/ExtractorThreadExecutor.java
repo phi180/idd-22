@@ -17,7 +17,7 @@ public class ExtractorThreadExecutor extends Thread {
 
     public void run() {
         for(String url : urls) {
-            new ExtractorApiImpl().getLabeledDataFromXpath(url, label2xpaths);
+            new ExtractorApiImpl().getLabeledDataFromSelector(url, label2xpaths);
         }
     }
 
