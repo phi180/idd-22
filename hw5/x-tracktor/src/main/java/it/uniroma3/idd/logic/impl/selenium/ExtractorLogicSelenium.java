@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +21,13 @@ import java.util.Map;
 public class ExtractorLogicSelenium implements Extractor {
 
     private static final int MAX_WAIT_DURATION = 1;
-    private final List<String> clickXPaths;
+    private List<String> clickXPaths = new ArrayList<>();
 
     public ExtractorLogicSelenium(List<String> clickXPaths) {
         System.setProperty("webdriver.gecko.driver", Utils.getResourceFullPath(Utils.getDriversLocation()));
-        this.clickXPaths = clickXPaths;
+        if(clickXPaths != null) {
+            this.clickXPaths = clickXPaths;
+        }
     }
 
     public ExtractedLabeledData extractLabeledData(String url, Map<String,List<String>> label2xpath) {
@@ -98,7 +101,7 @@ public class ExtractorLogicSelenium implements Extractor {
     private void clickXpaths(WebDriver webDriver, List<String> clickXPaths) {
         synchronized (webDriver) {
             try {
-                webDriver.wait(2000);
+                webDriver.wait(200);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }

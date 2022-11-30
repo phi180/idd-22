@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-class ExtractorApiImplTest {
+class ExtractorApiImplTestXPath {
 
     private static final String URLS_DIRECTORY = Utils.getResourceFullPath("./input/urls/");
     private static final String XPATHS_DIRECTORY = Utils.getResourceFullPath("./input/xpath/");
@@ -39,6 +39,12 @@ class ExtractorApiImplTest {
     @Test
     void getLabeledDataFromXpathValueToday() {
         String datasetName = "valuetoday";
+        exec(datasetName);
+    }
+
+    @Test
+    void getLabeledDataFromXpathMarketCapIndia() {
+        String datasetName = "companiesmarketcapindia";
         exec(datasetName);
     }
 

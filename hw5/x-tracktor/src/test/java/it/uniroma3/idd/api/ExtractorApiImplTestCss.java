@@ -1,5 +1,6 @@
 package it.uniroma3.idd.api;
 
+import it.uniroma3.idd.logic.singleton.WebDriverSingleton;
 import it.uniroma3.idd.utils.Constants;
 import it.uniroma3.idd.utils.Utils;
 import org.apache.commons.io.FileUtils;
@@ -12,32 +13,35 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ExtractorApiImplTestTable {
+public class ExtractorApiImplTestCss {
 
+    private static final String URLS_DIRECTORY = Utils.getResourceFullPath("./input/urls/");
     private static final String XPATHS_DIRECTORY = Utils.getResourceFullPath("./input/css/");
     private static final String SEPARATOR = "\\^";
     private static final String SLASH = "/";
+    private static final String TXT_EXTENSION = ".txt";
 
     @Test
-    void getTableFromFT() {
-        exec("ft","https://www.ft.com/ft1000-2022");
-    }
-
-    @Test
-    void getTableFromCampaignIndia() {
-        exec("campaignindia","https://www.campaignindia.in/article/asias-top-1000-brands-the-full-ranking-revealed/414513");
-    }
-
-    private void exec(String datasetName, String url) {
-        System.setProperty(Constants.DATASET_PROPERTY, datasetName);
-
-        ExtractorApi extractorApi = new ExtractorApiImpl();
-        extractorApi.getTableFromPage(url,readLabel2Xpath(datasetName));
+    void getLabeledDataFromXpathForbes() {
+        String datasetName = "forbes";
+        exec(datasetName);
     }
 
     /** private methods */
 
-    private Map<String, List<String>> readLabel2Xpath(String datasetName) {
+    private void exec(String datasetName) {
+        System.setProperty(Constants.DATASET_PROPERTY, datasetName);
+
+        Map<String, List<String>> label2xpaths = readLabel2Xpath(datasetName);
+        ExtractorApi extractorApi = new ExtractorApiImpl();
+        for(String url : readUrls(datasetName)) {
+            extractorApi.getLabeledDataFromSelector(url, label2xpaths);
+        }
+
+        WebDriverSingleton.getInstance().close();
+    }
+
+    private Map<String,List<String>> readLabel2Xpath(String datasetName) {
         Map<String,List<String>> label2xpaths = new HashMap<>();
         String fullPath = XPATHS_DIRECTORY + SLASH + datasetName;
         File file = new File(fullPath);
@@ -55,6 +59,25 @@ public class ExtractorApiImplTestTable {
         }
 
         return label2xpaths;
+    }
+
+    private List<String> readUrls(String datasetName) {
+        List<String> urls = new ArrayList<>();
+
+        String fullPath = URLS_DIRECTORY + SLASH + datasetName + TXT_EXTENSION;
+        File file = new File(fullPath);
+
+        try {
+            List<String> contents = FileUtils.readLines(file, "UTF-8");
+
+            for (String line : contents) {
+                urls.add(line);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return urls;
     }
 
 }

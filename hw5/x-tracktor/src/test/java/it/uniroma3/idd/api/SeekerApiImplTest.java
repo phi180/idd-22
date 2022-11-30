@@ -16,6 +16,15 @@ class SeekerApiImplTest {
     }
 
     @Test
+    void getEntityUrlsCompaniesMarketCapIndia() {
+        final String entryPageUrl = "https://companiesmarketcap.com/india/largest-companies-in-india-by-market-cap";
+        final String nextButtonXPath = "//a[text()=' Next 100❯ ']";
+        final String entityPagesUrlXPath = "//table[@class='default-table table marketcap-table dataTable']/tbody/tr/td/div/a";
+
+        Utils.writeUrlsToFile("companiesmarketcapindia", new SeekerApiImpl().getEntityUrls(entryPageUrl,nextButtonXPath, 5, entityPagesUrlXPath));
+    }
+
+    @Test
     void getEntityUrlsForbes() {
         final String entryPageUrl = "https://www.forbes.com/lists/global2000/";
         final String nextButtonXPath = "//button[@class='next-button arrow-footer']";

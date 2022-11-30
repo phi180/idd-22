@@ -1,0 +1,2 @@
+Name#//div[@class="company-name"]
+Marketcap#//div[@class="info-box"]/div[text()='Marketcap']/preceding-sibling::div

@@ -52,7 +52,6 @@ public class ExtractorLogicJsoup implements Extractor {
         final String TH = "th";
         final String TD = "td";
 
-
         Document document = null;
         try {
             document = Jsoup.connect(url).get();
