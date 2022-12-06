@@ -48,7 +48,7 @@ class SeekerApiImplTest {
         final String nextButtonXPath = "//div[@class='pagination']/ul[@class='pagination']/li/a[i[text()='chevron_right']]";
         final String entityPagesUrlXPath = "//table[@class='striped responsive-table']/tbody/tr/td[2]/a";
 
-        Utils.writeUrlsToFile("disfold", new SeekerApiImpl().getEntityUrls(entryPageUrl,nextButtonXPath, 8, entityPagesUrlXPath));
+        Utils.writeUrlsToFile("disfold", new SeekerApiImpl().getEntityUrls(entryPageUrl,nextButtonXPath, 19, entityPagesUrlXPath));
     }
 
 }
