@@ -1,0 +1,3 @@
+table^table
+click^//a[@class='o-cookie-message__button']
+click^//button[text()='Show more']

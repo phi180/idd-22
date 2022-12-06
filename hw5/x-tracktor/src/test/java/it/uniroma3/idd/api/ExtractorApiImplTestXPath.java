@@ -2,7 +2,6 @@ package it.uniroma3.idd.api;
 
 import it.uniroma3.idd.logic.singleton.WebDriverSingleton;
 import it.uniroma3.idd.utils.Constants;
-import it.uniroma3.idd.utils.ExtractorThreadExecutor;
 import it.uniroma3.idd.utils.Utils;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -11,7 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
-class ExtractorApiImplTest {
+class ExtractorApiImplTestXPath {
 
     private static final String URLS_DIRECTORY = Utils.getResourceFullPath("./input/urls/");
     private static final String XPATHS_DIRECTORY = Utils.getResourceFullPath("./input/xpath/");
@@ -43,6 +42,12 @@ class ExtractorApiImplTest {
         exec(datasetName);
     }
 
+    @Test
+    void getLabeledDataFromXpathMarketCapIndia() {
+        String datasetName = "companiesmarketcapindia";
+        exec(datasetName);
+    }
+
     /** private methods */
 
     private void exec(String datasetName) {
@@ -51,7 +56,7 @@ class ExtractorApiImplTest {
         Map<String, List<String>> label2xpaths = readLabel2Xpath(datasetName);
         ExtractorApi extractorApi = new ExtractorApiImpl();
         for(String url : readUrls(datasetName)) {
-            extractorApi.getLabeledDataFromXpath(url, label2xpaths);
+            extractorApi.getLabeledDataFromSelector(url, label2xpaths);
         }
 
         WebDriverSingleton.getInstance().close();
