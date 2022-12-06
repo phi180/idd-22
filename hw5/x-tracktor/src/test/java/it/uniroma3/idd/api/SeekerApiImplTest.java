@@ -12,7 +12,7 @@ class SeekerApiImplTest {
         final String nextButtonXPath = "//ul[@class='pagination js-pager__items']/li[@class='pager__item pager__item--next']/a";
         final String entityPagesUrlXPath = "//h2[@class='text-primary']/a";
 
-        Utils.writeUrlsToFile("valuetoday", new SeekerApiImpl().getEntityUrls(entryPageUrl,nextButtonXPath, 20, entityPagesUrlXPath));
+        Utils.writeUrlsToFile("valuetoday", new SeekerApiImpl().getEntityUrls(entryPageUrl,nextButtonXPath, 100, entityPagesUrlXPath));
     }
 
     @Test
