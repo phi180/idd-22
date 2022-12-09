@@ -3,18 +3,21 @@ package it.uniroma3.idd.hw3.engine;
 import it.uniroma3.idd.hw3.api.ParseApi;
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import it.uniroma3.idd.hw3.api.ParseApiImpl;
 import it.uniroma3.idd.hw3.filesystem.DatasetBuffer;
-import it.uniroma3.idd.hw3.filesystem.StatsWriter;
 import it.uniroma3.idd.hw3.stats.Statistics;
 
 import java.io.FileNotFoundException;
 import java.util.*;
+import java.util.logging.Logger;
 
 public class Engine {
 
     private final ParseApi parseApi;
+
+    private static final int TABLES_TO_LOG = 10000;
+    private static final Logger logger = Logger.getLogger(Engine.class.toString());
 
     public Engine() {
         parseApi = new ParseApiImpl();
@@ -32,9 +35,10 @@ public class Engine {
         }
 
         /* for each table in the dataset */
+        int nTables = 0;
         while(!datasetBuffer.isEnded()) {
             String line = datasetBuffer.readNextLine();
-            TableVO tableVO = parseApi.parse(line);
+            ColumnarTableVO tableVO = parseApi.parseByColumn(line);
             if(tableVO == null)
                 break;
 
@@ -54,12 +58,17 @@ public class Engine {
                 statistics.getNumOfDistinctValues2numberOfColumns().putIfAbsent(columnDistinctTokens,0);
                 statistics.getNumOfDistinctValues2numberOfColumns().put(columnDistinctTokens, statistics.getNumOfDistinctValues2numberOfColumns().get(columnDistinctTokens)+1);
             }
+
+            if(nTables % TABLES_TO_LOG == 0) {
+                logger.info("Read tables for statistics: " + nTables);
+            }
+            nTables++;
         }
 
         return statistics;
     }
 
-    private Long getNumberOfEmptyCells(TableVO tableVO) {
+    private Long getNumberOfEmptyCells(ColumnarTableVO tableVO) {
         Long numberOfEmptyCells = 0L;
 
         for(Map.Entry<Integer, ColumnVO> columnVOEntry : tableVO.getColumns().entrySet()) {

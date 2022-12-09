@@ -5,7 +5,7 @@ import it.uniroma3.idd.hw3.api.StatsApi;
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.StatisticsVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import it.uniroma3.idd.hw3.api.ParseApiImpl;
 import it.uniroma3.idd.hw3.api.StatsApiImpl;
 import it.uniroma3.idd.hw3.filesystem.DatasetBuffer;
@@ -46,7 +46,10 @@ public class IndexCreationLogic {
 
     public void createIndex(String datasetPath) throws IOException {
         float precision = Float.parseFloat(PropertiesReader.getProperty(PRECISION_PROPERTY));
-        StatisticsVO statisticsVO = this.getStatistics(datasetPath);
+
+        StatisticsVO statisticsVO = null;
+        if(precision < 1f)
+            statisticsVO = this.getStatistics(datasetPath);
 
         DatasetBuffer datasetBuffer = null;
 
@@ -71,31 +74,44 @@ public class IndexCreationLogic {
         IndexWriterConfig config = new IndexWriterConfig(analyzer);
 
         IndexWriter writer = new IndexWriter(directory, config);
-        writer.deleteAll();
 
         long tables = 0L;
-        while(!datasetBuffer.isEnded()) {
+        boolean datasetEnded = false;
+        do {
             String line = datasetBuffer.readNextLine();
-            TableVO tableVO = parseApi.parse(line);
-            if (tableVO == null)
-                break;
 
-            for(Map.Entry<Integer, ColumnVO> columnVOEntry: tableVO.getColumns().entrySet()) {
-                Integer columnNum = columnVOEntry.getKey();
-                ColumnVO columnVO = columnVOEntry.getValue();
+            if(!datasetBuffer.isEnded()) {
+                ColumnarTableVO tableVO = parseApi.parseByColumn(line);
 
-                int distinctColumnTokens = Utils.countDistinctTokens(columnVO,precision);
+                for (Map.Entry<Integer, ColumnVO> columnVOEntry : tableVO.getColumns().entrySet()) {
+                    Integer columnNum = columnVOEntry.getKey();
+                    ColumnVO columnVO = columnVOEntry.getValue();
 
-                if(chebyshevCondition(distinctColumnTokens,precision,statisticsVO)) {
-                    insertColumnInIndex(writer, tableVO.getOid(), columnNum,columnVO);
+                    int distinctColumnTokens = Utils.countDistinctTokens(columnVO, precision);
+
+                    if (chebyshevCondition(distinctColumnTokens, precision, statisticsVO)) {
+                        insertColumnInIndex(writer, tableVO.getOid(), columnNum, columnVO);
+                    }
                 }
-            }
 
-            if(tables % N_TABLES == 0)
-                logger.info("IndexCreationLogic - createIndex(): # tables analyzed: " + tables++);
-        }
+                if (tables % N_TABLES == 0)
+                    logger.info("IndexCreationLogic - createIndex(): # tables analyzed: " + tables);
+                tables++;
+            } else {
+                datasetEnded = true;
+            }
+        } while(!datasetEnded);
 
         writer.commit();
+        writer.close();
+        directory.close();
+    }
+
+    public void dropIndex() throws IOException {
+        Directory directory = this.getIndexDirectory(PropertiesReader.getProperty(INDEX_PATH_PROPERTY));
+        IndexWriterConfig config = new IndexWriterConfig();
+        IndexWriter writer = new IndexWriter(directory, config);
+        writer.deleteAll();
         writer.close();
         directory.close();
     }

@@ -1,7 +1,7 @@
 package it.uniroma3.idd.hw3.logic.result;
 
 import it.uniroma3.idd.entity.ResultVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import it.uniroma3.idd.hw3.api.ParseApi;
 import it.uniroma3.idd.hw3.api.ParseApiImpl;
 import it.uniroma3.idd.hw3.filesystem.DatasetBuffer;
@@ -72,7 +72,7 @@ public class QueryResultsWriter {
             DatasetBuffer datasetBuffer = new DatasetBuffer(datasetPath);
             while(!datasetBuffer.isEnded()) {
                 String line = datasetBuffer.readNextLine();
-                TableVO tableVO = parseApi.parse(line);
+                ColumnarTableVO tableVO = parseApi.parseByColumn(line);
                 if (tableVO == null)
                     break;
 

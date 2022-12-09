@@ -2,7 +2,7 @@ package it.uniroma3.idd.hw3.logic.result;
 
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
@@ -10,11 +10,8 @@ import java.io.IOException;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
 public class HtmlTableResultWriter {
-
-    private static final Logger logger = Logger.getLogger(HtmlTableResultWriter.class.toString());
 
     private static final String OUTPUT_FOLDER = "./target/html/";
 
@@ -41,7 +38,7 @@ public class HtmlTableResultWriter {
         }
     }
 
-    public void appendResultTable(TableVO tableVO, List<Long> columnsToShade, Long timestamp) {
+    public void appendResultTable(ColumnarTableVO tableVO, List<Long> columnsToShade, Long timestamp) {
         File file = new File(OUTPUT_FOLDER + timestamp + ".html");
 
         StringBuilder htmlTable = new StringBuilder();

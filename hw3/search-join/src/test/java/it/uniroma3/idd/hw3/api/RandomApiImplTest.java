@@ -1,6 +1,6 @@
 package it.uniroma3.idd.hw3.api;
 
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import it.uniroma3.idd.hw3.utils.Utils;
 import org.junit.jupiter.api.Test;
 
@@ -18,7 +18,7 @@ class RandomApiImplTest {
     @Test
     void testGetRandomTable() {
         RandomApi randomApi = new RandomApiImpl();
-        TableVO tableVO = randomApi.getRandomTable(DATASET_PATH);
+        ColumnarTableVO tableVO = randomApi.getRandomTable(DATASET_PATH);
 
         assertTrue(testOids.stream().anyMatch(oid -> tableVO.getOid().equals(oid)));
     }
