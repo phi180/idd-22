@@ -42,7 +42,6 @@ public class RepoApiImpl implements RepoApi {
         }
 
         List<TableMentor> bufferTables = new ArrayList<>();
-        boolean datasetEnded = false;
         do {
             String line;
             line = datasetBuffer.readNextLine();
@@ -64,10 +63,10 @@ public class RepoApiImpl implements RepoApi {
                     log.info("Inserted n. {} tables", insertedTables);
                 }
                 insertedTables++;
-            } else {
-                datasetEnded = true;
             }
         } while (!datasetBuffer.isEnded());
+
+        repository.saveAll(bufferTables);
     }
 
     @Override
