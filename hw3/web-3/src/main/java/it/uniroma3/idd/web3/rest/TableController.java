@@ -1,14 +1,16 @@
 package it.uniroma3.idd.web3.rest;
 
 import it.uniroma3.idd.entity.TableByRowVO;
-import it.uniroma3.idd.hw3.token.CustomTokenizer;
+import it.uniroma3.idd.tablesrepo.util.CsvWriter;
 import it.uniroma3.idd.web3.domain.service.TableService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@Slf4j
 public class TableController {
 
     @Autowired
@@ -26,14 +28,24 @@ public class TableController {
 
     @GetMapping("/table/{oid}")
     public TableByRowVO getTableByOid(@PathVariable String oid) {
-        return tableService.getTable(oid);
+        log.info("TableController - getTableByOid(): oid={}",oid);
+        TableByRowVO table = tableService.getTable(oid);
+        CsvWriter.writeTableToCsv(table);
+
+        return table;
     }
 
     @PostMapping("/query")
     public List<TableByRowVO> query(@RequestBody QueryRequest queryRequest) {
-        return tableService.query(queryRequest.getColumnCells(), queryRequest.getK());
-    }
+        log.info("TableController - query(): queryRequest={}",queryRequest);
+        List<TableByRowVO> tableByRowVOS = tableService.query(queryRequest.getColumnCells(), queryRequest.getK());
+        for(TableByRowVO table : tableByRowVOS) {
+            log.info("TableController - query(): Writing table={}",table);
+            CsvWriter.writeTableToCsv(table);
+        }
 
+        return tableByRowVOS;
+    }
 
     @DeleteMapping("/delete")
     public void deleteAll() {

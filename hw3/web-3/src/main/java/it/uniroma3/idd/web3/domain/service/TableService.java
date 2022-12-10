@@ -5,7 +5,6 @@ import it.uniroma3.idd.entity.TableByRowVO;
 import it.uniroma3.idd.hw3.api.IndexApi;
 import it.uniroma3.idd.hw3.api.QueryApi;
 import it.uniroma3.idd.hw3.api.RepoApi;
-import it.uniroma3.idd.hw3.domain.result.ResultColumn;
 import it.uniroma3.idd.hw3.token.CustomTokenizer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;

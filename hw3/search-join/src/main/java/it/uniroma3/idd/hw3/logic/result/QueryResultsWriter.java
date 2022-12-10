@@ -1,25 +1,20 @@
 package it.uniroma3.idd.hw3.logic.result;
 
 import it.uniroma3.idd.entity.ResultVO;
-import it.uniroma3.idd.entity.ColumnarTableVO;
-import it.uniroma3.idd.hw3.api.ParseApi;
-import it.uniroma3.idd.hw3.api.ParseApiImpl;
-import it.uniroma3.idd.hw3.filesystem.DatasetBuffer;
 import it.uniroma3.idd.hw3.utils.PropertiesReader;
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.logging.Logger;
-import java.util.stream.Collectors;
 
 import static it.uniroma3.idd.hw3.utils.Constants.RESULTS_PATH_PROPERTY;
 
 public class QueryResultsWriter {
+
+    private static final String TOKEN_SEPARATOR=",";
     private static final String RESULTS_DIR = PropertiesReader.getProperty(RESULTS_PATH_PROPERTY);
     private static final Logger logger = Logger.getLogger(QueryResultsWriter.class.toString());
 
@@ -38,7 +33,7 @@ public class QueryResultsWriter {
         logger.info("queryTokens=" + List.of(queryTokens));
 
         for(String[] queryTokenGroup:queryTokens) {
-            sb.append(" | - | ");
+            sb.append(TOKEN_SEPARATOR);
             for(String token : queryTokenGroup)
                 sb.append(token).append(" ");
         }
@@ -56,37 +51,6 @@ public class QueryResultsWriter {
         try {
             FileUtils.writeStringToFile(file, result.getTableId() + ":" + result.getColumnNum()+"\n", "UTF-8", true);
         } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void appendFullResults(List<String[]> tokens, List<ResultVO> results, String datasetPath) {
-        logger.info("QueryResultsWriter - appendFullResults(): datasetPath="+datasetPath);
-
-        ParseApi parseApi = new ParseApiImpl();
-
-        HtmlTableResultWriter htrw = new HtmlTableResultWriter();
-        htrw.appendColumnQuery(tokens,beginTimestamp);
-
-        try {
-            DatasetBuffer datasetBuffer = new DatasetBuffer(datasetPath);
-            while(!datasetBuffer.isEnded()) {
-                String line = datasetBuffer.readNextLine();
-                ColumnarTableVO tableVO = parseApi.parseByColumn(line);
-                if (tableVO == null)
-                    break;
-
-                List<ResultVO> currentTableResults = results.stream().filter(result -> Objects.equals(result.getTableId(), tableVO.getOid())).collect(Collectors.toList());
-
-                if(currentTableResults.stream().map(ResultVO::getTableId).collect(Collectors.toList()).contains(tableVO.getOid())) {
-                    List<Long> columnsNums = currentTableResults.stream().map(ResultVO::getColumnNum).collect(Collectors.toList());
-                    htrw.appendResultTable(tableVO, columnsNums, beginTimestamp);
-                }
-
-            }
-
-            logger.info("QueryResultsWriter - appendFullResults(): END");
-        } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
