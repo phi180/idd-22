@@ -33,7 +33,7 @@ public class BigQueryLogicTest {
                 Long beginQueryTime = new Date().getTime();
                 List<ResultVO> resultVOList = queryApi.query(columnVO, K);
                 Utils.writeResultsToFile(Utils.getListOfTokens(columnVO), resultVOList, beginQueryTime);
-                Utils.writeFullResultsToFile(Utils.getListOfTokens(columnVO), resultVOList, beginQueryTime, DATASET_PATH);
+                //Utils.writeFullResultsToFile(Utils.getListOfTokens(columnVO), resultVOList, beginQueryTime, DATASET_PATH);
             }
         }
     }

@@ -81,12 +81,6 @@ public class Utils {
         qrw.closeFile();
     }
 
-    public static void writeFullResultsToFile(List<String[]> tokens, List<ResultVO> results, Long beginTime, String datasetPath) {
-        QueryResultsWriter qrw = new QueryResultsWriter(beginTime);
-        qrw.appendFullResults(tokens,results,datasetPath);
-        qrw.closeFile();
-    }
-
     public static List<String[]> getListOfTokens(ColumnVO columnVO) {
         List<String[]> groupsOfTokens = new ArrayList<>();
         for(CellVO cellVO : columnVO.getCells().values()) {

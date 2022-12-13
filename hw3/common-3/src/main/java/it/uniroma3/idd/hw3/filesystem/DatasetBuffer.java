@@ -9,13 +9,15 @@ import java.util.*;
 public class DatasetBuffer {
 
     private boolean isEnded;
-
     private int currentLine = 0;
+
+    private int BUFFER_SIZE = 8192;
+
     private BufferedReader reader;
 
     public DatasetBuffer(String datasetPath) throws FileNotFoundException {
         this.isEnded = false;
-        this.reader = new BufferedReader(new FileReader(datasetPath));
+        this.reader = new BufferedReader(new FileReader(datasetPath), BUFFER_SIZE);
     }
 
     public String readNextLine() {
@@ -23,12 +25,16 @@ public class DatasetBuffer {
         try {
             line = reader.readLine();
             currentLine++;
-            if(line==null || line.length()==0) {
+            if(line==null || line.trim().length()==0) {
                 reader.close();
                 this.isEnded = true;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (OutOfMemoryError oom) {
+            oom.printStackTrace();
+            System.out.println("Current line = "+ currentLine);
+            line = "";
         }
 
         return line;
@@ -41,12 +47,15 @@ public class DatasetBuffer {
                 reader.readLine();
             }
             line = reader.readLine();
-            if(line==null || line.length()==0) {
+            if(line==null || line.trim().length()==0) {
                 reader.close();
                 this.isEnded = true;
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
+        } catch (OutOfMemoryError oom) {
+            oom.printStackTrace();
+            line = "";
         }
 
         return line;

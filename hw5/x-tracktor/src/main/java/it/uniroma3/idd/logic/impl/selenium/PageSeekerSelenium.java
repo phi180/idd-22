@@ -1,5 +1,6 @@
-package it.uniroma3.idd.logic;
+package it.uniroma3.idd.logic.impl.selenium;
 
+import it.uniroma3.idd.logic.Seeker;
 import it.uniroma3.idd.utils.Utils;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,7 +17,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageSeeker {
+public class PageSeekerSelenium implements Seeker {
 
     private static final int MAX_WAIT_DURATION = 5;
     private static final String HREF_ATTRIBUTE = "href";
@@ -24,7 +25,7 @@ public class PageSeeker {
 
     private static final boolean JAVASCRIPT_ENABLED = false;
 
-    public PageSeeker() {
+    public PageSeekerSelenium() {
         System.setProperty("webdriver.gecko.driver", Utils.getResourceFullPath(Utils.getDriversLocation()));
     }
 

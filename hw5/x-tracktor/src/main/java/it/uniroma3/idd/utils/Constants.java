@@ -7,4 +7,6 @@ public class Constants {
     public static final String DEFAULT_DATASET = "default";
     public static final String DATASET_PROPERTY = "dataset.name";
 
+    public static final String ENGINE_PROP = "engine";
+
 }

@@ -1,0 +1,18 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: web3
+  datasource:
+    username: postgres
+    url: jdbc:postgresql://localhost:5433/mentordb
+    password: postgres
+    driverClassName: org.postgresql.Driver
+  sql:
+    init:
+      mode: always
+  jpa:
+    database: POSTGRESQL
+    hibernate:
+      ddl-auto: update

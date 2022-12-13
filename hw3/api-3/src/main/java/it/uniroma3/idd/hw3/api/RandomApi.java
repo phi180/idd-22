@@ -1,11 +1,11 @@
 package it.uniroma3.idd.hw3.api;
 
 import it.uniroma3.idd.entity.ColumnVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 
 public interface RandomApi {
 
-    TableVO getRandomTable(String datasetPath);
+    ColumnarTableVO getRandomTable(String datasetPath);
 
     ColumnVO getRandomColumn(String datasetPath);
 
