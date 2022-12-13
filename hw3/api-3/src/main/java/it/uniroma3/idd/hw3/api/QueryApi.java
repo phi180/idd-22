@@ -2,7 +2,7 @@ package it.uniroma3.idd.hw3.api;
 
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.ResultVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 
 import java.util.List;
 
@@ -27,6 +27,6 @@ public interface QueryApi {
      * @param k needed for top-k selection
      * @return a set of results, each one representing the column in a table
      * */
-    List<ResultVO> query(TableVO tableVO, int k);
+    List<ResultVO> query(ColumnarTableVO tableVO, int k);
 
 }

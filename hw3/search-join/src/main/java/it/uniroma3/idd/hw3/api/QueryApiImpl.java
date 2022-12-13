@@ -6,14 +6,16 @@ import it.uniroma3.idd.hw3.domain.result.ResultColumn;
 import it.uniroma3.idd.entity.CellVO;
 import it.uniroma3.idd.entity.ColumnVO;
 import it.uniroma3.idd.entity.ResultVO;
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import it.uniroma3.idd.hw3.logic.QueryLogic;
+import it.uniroma3.idd.hw3.token.CustomTokenizer;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
+@Component
 public class QueryApiImpl implements QueryApi {
 
     @Override
@@ -34,7 +36,7 @@ public class QueryApiImpl implements QueryApi {
     public List<ResultVO> query(ColumnVO columnVO, int k) {
         List<String[]> groupsOfTokens = new ArrayList<>();
         for(CellVO cellVO : columnVO.getCells().values()) {
-            String[] tokens = this.splitToTokens(cellVO.getContent());
+            String[] tokens = CustomTokenizer.tokenize(cellVO.getContent());
             groupsOfTokens.add(tokens);
         }
 
@@ -42,7 +44,7 @@ public class QueryApiImpl implements QueryApi {
     }
 
     @Override
-    public List<ResultVO> query(TableVO tableVO, int k) {
+    public List<ResultVO> query(ColumnarTableVO tableVO, int k) {
         List<ResultVO> results = new ArrayList<>();
         for(ColumnVO columnVO : tableVO.getColumns().values()) {
             results.addAll(query(columnVO,k));
@@ -52,10 +54,6 @@ public class QueryApiImpl implements QueryApi {
     }
 
     /** PRIVATE METHODS */
-
-    private String[] splitToTokens(String cellContent) {
-        return cellContent.replaceAll("[^a-zA-Z0-9 ]", "").toLowerCase().split("\\s+");
-    }
 
     private ColumnVO toColumnVO(LuceneTableColumn luceneTableColumn) {
         ColumnVO columnVO = new ColumnVO();

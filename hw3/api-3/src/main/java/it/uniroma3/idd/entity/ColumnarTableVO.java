@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.TreeMap;
 
 @Data
-public class TableVO {
+public class ColumnarTableVO {
 
     private String oid;
     private Map<Integer,ColumnVO> columns = new TreeMap<>();

@@ -1,6 +1,6 @@
 package it.uniroma3.idd.hw3.api;
 
-import it.uniroma3.idd.entity.TableVO;
+import it.uniroma3.idd.entity.ColumnarTableVO;
 import it.uniroma3.idd.hw3.TestUtils;
 import org.apache.commons.io.FileUtils;
 import org.junit.jupiter.api.Test;
@@ -20,7 +20,7 @@ class ParseApiImplTest {
     void testParseOnSampleInput() throws IOException {
         parseApi = new ParseApiImpl();
 
-        TableVO tableVO = parseApi.parse(FileUtils.readFileToString(new File(JSON_PATH), "UTF-8"));
+        ColumnarTableVO tableVO = parseApi.parseByColumn(FileUtils.readFileToString(new File(JSON_PATH), "UTF-8"));
 
         // Testing column names
         assertEquals("Team 1", tableVO.getColumns().get(0).getHeader());

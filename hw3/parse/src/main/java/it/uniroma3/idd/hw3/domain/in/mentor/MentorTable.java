@@ -2,6 +2,7 @@ package it.uniroma3.idd.hw3.domain.in.mentor;
 
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -13,7 +14,7 @@ public class MentorTable {
 
     private String id;
 
-    private List<MentorCell> cells;
+    private List<MentorCell> cells = new ArrayList<>();
 
     private String beginIndex;
 
@@ -27,7 +28,7 @@ public class MentorTable {
 
     private MentorTableMaxDimensions maxDimensions;
 
-    private List<String> headersCleaned;
+    private List<String> headersCleaned = new ArrayList<>();
 
     private Integer keyColumn;
 

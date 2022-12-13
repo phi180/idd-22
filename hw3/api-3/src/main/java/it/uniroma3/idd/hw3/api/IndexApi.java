@@ -7,4 +7,6 @@ public interface IndexApi {
      * */
     void createIndex(String datasetPath);
 
+    void dropIndex();
+
 }

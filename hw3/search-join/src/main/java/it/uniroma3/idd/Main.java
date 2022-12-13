@@ -30,7 +30,6 @@ public class Main {
             Long beginQueryTime = new Date().getTime();
             List<ResultVO> resultVOList = queryApi.query(columnVO, K);
             Utils.writeResultsToFile(Utils.getListOfTokens(columnVO), resultVOList, beginQueryTime);
-            Utils.writeFullResultsToFile(Utils.getListOfTokens(columnVO), resultVOList, beginQueryTime, datasetPath);
         }
 
     }
